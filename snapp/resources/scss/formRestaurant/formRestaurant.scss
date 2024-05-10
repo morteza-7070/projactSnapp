@@ -1,0 +1,55 @@
+.form{
+    background-color: #9980FA;
+    width: auto;
+    height: auto;
+    margin: 0 10rem;
+    text-align: center;
+    justify-content: center;
+    form{
+       #name{
+           margin-top: 20px;
+           .name{
+               margin-left: 40px;
+
+
+           }
+       }
+        #type{margin-right: 4rem;
+
+            padding-left: 20px;
+            #typeRestaurant{margin-left: 60px;margin-top: 20px;
+                option{
+
+                }
+
+            }
+
+        }
+        #phone{padding-right: 2rem;
+            margin-top: 20px;
+            transform: translateX(20px);
+            .phone{
+                margin-left: 3rem;
+
+            }
+        }
+        #address{padding-right: 2rem;
+            margin-top: 20px;
+            transform: translateX(20px);
+            .address{margin-left: 3rem;
+
+            }
+        }
+        label{ margin-top: 20px;
+            .accountNumber{
+
+            }
+        }
+        .btn{
+            text-align: center;
+           margin: 2rem 10rem 2rem 15rem;
+            justify-content: center;
+            //transform: translateX(5rem);
+        }
+    }
+}

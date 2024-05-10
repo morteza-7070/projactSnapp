@@ -1,0 +1,36 @@
+@import "edit";
+.container{
+    background-color: #feca57;
+    margin-top: 5rem;
+    a{
+        background-color: #0abde3;
+
+
+    }
+    table{
+        margin: 5rem 2rem;
+        thead{
+            tr{
+                th{
+                    padding: 0 3rem;
+                    text-align: center;
+
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    padding: 0 3rem;
+                    text-align: center;
+                    form{
+                        .btn{
+                            transform: translateX(30rem);
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}

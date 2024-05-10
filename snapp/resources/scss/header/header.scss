@@ -1,0 +1,22 @@
+.container{
+    background-color: #1a202c;
+
+    .header{display: flex;
+
+        .navbar-nav{flex-direction: row;
+            .nav-item{margin-left: 2rem;
+                .nav-link{
+
+                }
+            }
+        }
+
+    }
+}
+.row{
+    .col-sm-6{background-color: #7f8fa6;
+        transform: translateY(10rem);
+        text-align: center;
+        justify-content: center;
+    }
+}
