@@ -23,8 +23,10 @@ Route::prefix('api')->group(function () {
 });
 Route::prefix('buyer')->group(function () {
     Route::get('/items', [BuyyerController::class, 'index'])->name('buyer.items');
-    Route::get('/items/{id}', [BuyyerController::class, 'show']);
+    Route::get('/items/{buyyer}', [BuyyerController::class, 'show']);
     Route::post('/items', [BuyyerController::class, 'store']);
+    Route::post('/items/{buyyer}', [BuyyerController::class, 'edit']);
+    //Route::put('/items/{buyyer}', [BuyyerController::class, 'update']);
     Route::put('/items/{id}', [BuyyerController::class, 'update']);
     Route::delete('/items/{buyyer}', [BuyyerController::class, 'destroy']);
 });

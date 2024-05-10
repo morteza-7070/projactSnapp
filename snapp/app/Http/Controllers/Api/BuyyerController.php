@@ -56,7 +56,7 @@ class BuyyerController extends Controller
      */
     public function show(buyyer $buyyer,$id,$API)
     {
-     return new BuyResource($id);
+     return new BuyResource($buyyer->id);
     }
 
     /**
@@ -64,7 +64,8 @@ class BuyyerController extends Controller
      */
     public function edit(buyyer $buyyer)
     {
-        //
+        $api=buyyer::findOrFail($buyyer->id);
+        return new BuyResource($api);
     }
 
     /**
@@ -72,22 +73,36 @@ class BuyyerController extends Controller
      */
     public function update(UpdatebuyyerRequest $request, buyyer $buyyer,$id)
     {
-        $api = buyyer::findOrFail($id);
-        $api->name=$request->name;
-        $api->email=$request->email;
-        $api->phoneNumber=$request->phoneNumber;
-        $api->password=$request->password;
-        $api->save();
-        $api->update($request->all());
-        return response()->json($api, 200);
+        $buyyer = Buyyer::findOrFail($buyyer->id);
+
+        $buyyer->name = $request->input('name');
+        $buyyer->email = $request->input('email');
+        $buyyer->phoneNumber = $request->input('phoneNumber');
+        $buyyer->password = $request->input('password');
+
+        $buyyer->save();
+
+        return response()->json($buyyer, 200);
     }
+       // $api = buyyer::findOrFail($buyyer->id);
+//        $api=$buyyer->id;
+//
+//        $api->name=$request->name;
+//        $api->email=$request->email;
+//        $api->phoneNumber=$request->phoneNumber;
+//        $api->password=$request->password;
+//        $api->save();
+//      //  $api->update($request->all());
+//        return response()->json($api, 200);
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(buyyer $buyyer,$id)
+    public function destroy(buyyer $buyyer)
     {
-        buyyer::destroy( $buyyer);
+//        buyyer::destroy();
+        $buyyer::destroy($buyyer->id);
         return response()->json(null, 204);
     }
 }
