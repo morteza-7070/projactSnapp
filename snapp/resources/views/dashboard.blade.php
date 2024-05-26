@@ -31,7 +31,7 @@
         </div>
     <div class="col-sm-6">
         <div class="btn">
-            <a href="{{route('buyer.items')}}"><button class="btn btn-success">صفحه ورود خریدار</button></a>
+            <a href="{{route('api.buyer.items')}}"><button class="btn btn-success">صفحه ورود خریدار</button></a>
         </div>
     </div>
 </div>

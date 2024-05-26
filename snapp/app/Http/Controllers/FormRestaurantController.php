@@ -24,7 +24,7 @@ class FormRestaurantController extends Controller
      */
     public function create()
     {
-        return view('form restaurant.formRestaurant');
+//        return view('form restaurant.formRestaurant');
     }
 
     /**

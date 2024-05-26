@@ -5,10 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categorizable extends Model
+class Order extends Model
 {
     use HasFactory;
-//    public function categorizables(){
-//        return $this->morphTo();
-//    }
+    protected $fillable = ['user_id','seller_id','product_id','quantity','price'];
 }

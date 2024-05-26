@@ -12,7 +12,12 @@ class CategoryFood extends Model
 //    public function categories(){
 //      return $this->morphToMany(CategoryFood::class,'categorizables');
 //    }
-    public function categorizable(){
-        return $this->morphTo();
-     }
+    public function Foods()
+    {
+        return $this->hasOne(CategoryFood::class, 'food_id');
+    }
+    public function category(){
+
+        return $this->morphToMany(Connection::class,'connectioanbels');
+    }
 }

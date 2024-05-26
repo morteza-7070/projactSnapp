@@ -1,46 +1,74 @@
 @import "create";
 @import "edit";
+//.container{
+//    h1{text-align: center}
+//    .btn{a{
+//        color: white;
+//    }}
+//    table{
+//        width: 100%;
+//        thead{
+//            tr{
+//                th{
+//                    padding: 0 5rem;
+//
+//
+//                }
+//            }
+//        }
+//        tbody{
+//            tr{
+//               .id{padding: 0 5rem}
+//                .imageRestaurant{img{
+//                    width: 200px;height: 200px
+//                }}
+//                .name{padding: 0 5rem}
+//                .button{
+//                    .form-delete{
+//                        #btn-delete{transform: translateX(-20rem);
+//
+//
+//
+//                        }
+//
+//                    }
+//                    .form-edit{
+//                        #edit{
+//
+//
+//                        }
+//
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
 .container{
-    h1{text-align: center}
-    .btn{a{
-        color: white;
-    }}
-    table{
-        width: 100%;
-        thead{
-            tr{
-                th{
-                    padding: 0 5rem;
+    .category_iranian{display: flex;
+        flex-direction: row;
+        margin-top: 5rem;
+
+        a{
+            font-weight: bolder;
+            margin-left: 3rem;
+            margin-right: 3rem;
+            margin-top: 3rem;
 
 
-                }
-            }
         }
-        tbody{
-            tr{
-               .id{padding: 0 5rem}
-                .imageRestaurant{img{
-                    width: 200px;height: 200px
-                }}
-                .name{padding: 0 5rem}
-                .button{
-                    .form-delete{
-                        #btn-delete{transform: translateX(-20rem);
+    }
+    .category_FastFood{display: flex;
+        flex-direction: row;
+        margin-top: 5rem;
+
+        a{
+            font-weight: bolder;
+            margin-left: 3rem;
+            margin-right: 3rem;
+            margin-top: 3rem;
 
 
-
-                        }
-
-                    }
-                    .form-edit{
-                        #edit{
-
-
-                        }
-
-                    }
-                }
-            }
         }
     }
 }

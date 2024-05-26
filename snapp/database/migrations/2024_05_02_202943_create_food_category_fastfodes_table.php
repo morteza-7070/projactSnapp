@@ -13,9 +13,14 @@ return new class extends Migration
     {
         Schema::create('food_category_fastfodes', function (Blueprint $table) {
             $table->id();
+
             $table->string('name');
             $table->text('image_food')->nullable();
+            $table->string("price");
             $table->text('description');
+            $table->unsignedBigInteger('discount_id');
+            $table->foreign('discount_id')->references('id')->on('discounts')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

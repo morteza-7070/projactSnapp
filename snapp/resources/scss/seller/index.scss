@@ -1,0 +1,48 @@
+@import "create";
+@import "edit";
+
+.container{
+    a{
+        text-decoration: none;
+        background-color: aqua;
+        border-radius: 30%;
+        color: #1a202c;
+
+    }
+    table{
+        width: 100%;
+        height: auto;
+        thead{
+            tr{
+                th{
+                    background-color: #6b7280;
+                   padding: 0 3rem;
+                    text-align: center;
+
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    padding: 0 3rem;
+                    text-align: center;
+
+                   #delete{
+                       transform: translateX(6rem);
+                   }
+                    #edit{
+                        transform: translateX(4rem);
+                    }
+
+                }
+                #name{ background-color: #9980FA}
+                #email{background-color: #9980FA}
+                #phone{background-color: #9980FA}
+                #name2{background-color: #9980FA}
+                #address{background-color: #9980FA}
+
+            }
+        }
+    }
+}

@@ -28,6 +28,7 @@
     @include('Category/category')
     <div class="banner">
 
+
     </div>
     <div class="footer">
         @include('footer/footer')

@@ -1,0 +1,26 @@
+@import "edit";
+@import "create";
+
+.container{
+    a{text-decoration: none;color: #1a202c}
+    table{
+        margin: 3rem 5rem;
+
+        thead{
+            tr{
+                th{
+                   padding-left: 3rem;
+                    text-align: center;
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    text-align: center;padding-left: 3rem;
+
+                }
+            }
+        }
+    }
+}

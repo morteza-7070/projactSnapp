@@ -1,0 +1,30 @@
+@import "create";
+table{
+    margin: 2rem 5rem;
+    thead{
+        tr{
+            th{
+
+                text-align: center;
+                margin-right: 5rem;
+
+
+            }
+        }
+    }
+    tbody{
+        tr{
+            td{
+                text-align: center;
+                .btn{
+                    margin-left: 700%;
+                }
+                img{
+                    width: 200px;
+                    height: 200px;
+                }
+
+            }
+        }
+    }
+}

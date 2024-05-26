@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categorizable;
-use App\Http\Requests\StoreCategorizableRequest;
-use App\Http\Requests\UpdateCategorizableRequest;
+use App\Models\Order;
+use App\Http\Requests\StoreOrderRequest;
+use App\Http\Requests\UpdateOrderRequest;
 
-class CategorizableController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class CategorizableController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCategorizableRequest $request)
+    public function store(StoreOrderRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class CategorizableController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Categorizable $categorizable)
+    public function show(Order $order)
     {
         //
     }
@@ -43,7 +43,7 @@ class CategorizableController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Categorizable $categorizable)
+    public function edit(Order $order)
     {
         //
     }
@@ -51,7 +51,7 @@ class CategorizableController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategorizableRequest $request, Categorizable $categorizable)
+    public function update(UpdateOrderRequest $request, Order $order)
     {
         //
     }
@@ -59,7 +59,7 @@ class CategorizableController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categorizable $categorizable)
+    public function destroy(Order $order)
     {
         //
     }

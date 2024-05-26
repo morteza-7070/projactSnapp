@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CategoryFood;
 use App\Http\Requests\StoreCategoryFoodRequest;
 use App\Http\Requests\UpdateCategoryFoodRequest;
+use App\Models\Discount;
 use Illuminate\Http\Request;
 
 class CategoryFoodController extends Controller
@@ -15,14 +16,17 @@ class CategoryFoodController extends Controller
     public function index()
     {
         $foodCategory = CategoryFood::all();
-        return view('Admin.food.index', compact('foodCategory'));
+        $discount=Discount::all();
+        return view('Admin.food.index', compact('foodCategory','discount'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
+
     {
+
         return view('Admin.food.create');
     }
 

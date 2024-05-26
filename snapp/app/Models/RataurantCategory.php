@@ -9,7 +9,8 @@ class RataurantCategory extends Model
 {
     use HasFactory;
     protected $fillable=['name',"image_restaurant"];
-    public function categories(){
-        return $this->morphToMany(CategoryFood::class,'categorizable');
+    public function category(){
+
+        return $this->morphToMany(Connection::class,'connectioanbels');
     }
 }

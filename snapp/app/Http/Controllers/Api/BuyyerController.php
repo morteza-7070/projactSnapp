@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatebuyyerRequest;
 use App\Http\Resources\BuyResource;
 use App\Models\Api\buyyer;
 use Illuminate\Http\Request;
+use function Laravel\Prompts\password;
 
 
 class BuyyerController extends Controller
@@ -19,7 +20,7 @@ class BuyyerController extends Controller
     public function index()
     {
        // $token = $request->user()->createToken();
-        $api = Buyyer::all();
+        $api = buyyer::all();
         return response()->json($api);
     }
 
@@ -41,11 +42,11 @@ class BuyyerController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phoneNumber' => $request->phoneNumber,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
         ]);
         //return $request->all();
-       // return response()->json($buy,201);
-        return BuyResource::collection($buy);
+        return response()->json($buy,201);
+        //return BuyResource::collection($buy);
 
     }
 
@@ -54,55 +55,47 @@ class BuyyerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(buyyer $buyyer,$id,$API)
+    public function show(buyyer $buyyer,$id)
     {
-     return new BuyResource($buyyer->id);
+        return buyyer::findOrFail($id);
+//     $api= buyyer::FindOrFail($id);
+//        return response()->json($api,200);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(buyyer $buyyer)
-    {
-        $api=buyyer::findOrFail($buyyer->id);
-        return new BuyResource($api);
-    }
+//    public function edit(buyyer $buyyer)
+//    {
+//        $api=buyyer::findOrFail($buyyer->id);
+//
+//        return new BuyResource($api);
+//    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatebuyyerRequest $request, buyyer $buyyer,$id)
+    public function update(Request $request, buyyer $buyyer,$id)
     {
-        $buyyer = Buyyer::findOrFail($buyyer->id);
-
-        $buyyer->name = $request->input('name');
-        $buyyer->email = $request->input('email');
-        $buyyer->phoneNumber = $request->input('phoneNumber');
-        $buyyer->password = $request->input('password');
-
-        $buyyer->save();
-
-        return response()->json($buyyer, 200);
-    }
-       // $api = buyyer::findOrFail($buyyer->id);
-//        $api=$buyyer->id;
+        $api=buyyer::FindOrFail($id);
+        $api->update($request->all());
+        return response()->json(['message' => 'Resource updated successfully', 'data' => $api], 200);
 //
-//        $api->name=$request->name;
-//        $api->email=$request->email;
-//        $api->phoneNumber=$request->phoneNumber;
-//        $api->password=$request->password;
-//        $api->save();
-//      //  $api->update($request->all());
-//        return response()->json($api, 200);
+//
+
+
+
+    }
+
 
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(buyyer $buyyer)
+    public function destroy(buyyer $buyyer,$id)
     {
 //        buyyer::destroy();
-        $buyyer::destroy($buyyer->id);
+        $buyyer::destroy($id);
         return response()->json(null, 204);
     }
 }

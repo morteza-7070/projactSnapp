@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\BuyyerController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +22,13 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::prefix('api')->group(function () {
    Route::get('/user',[BuyyerController::class , 'index']);
 });
+//middleware('auth:sanctum')->
+//Route::get('login',[AuthController::class , 'login']);
 Route::prefix('buyer')->group(function () {
-    Route::get('/items', [BuyyerController::class, 'index'])->name('buyer.items');
-    Route::get('/items/{buyyer}', [BuyyerController::class, 'show']);
+    Route::get('/items', [BuyyerController::class, 'index'])->name('api.buyer.items');
+    Route::get('/items/{id}', [BuyyerController::class, 'show']);
     Route::post('/items', [BuyyerController::class, 'store']);
-    Route::post('/items/{buyyer}', [BuyyerController::class, 'edit']);
-    //Route::put('/items/{buyyer}', [BuyyerController::class, 'update']);
+
     Route::put('/items/{id}', [BuyyerController::class, 'update']);
-    Route::delete('/items/{buyyer}', [BuyyerController::class, 'destroy']);
+    Route::delete('/items/{id}', [BuyyerController::class, 'destroy']);
 });

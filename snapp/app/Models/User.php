@@ -23,8 +23,16 @@ class User extends Authenticatable
         'phoneNumber',
         'password',
     ];
+    public function User()
+    {
+        return $this->hasOne(User::class, 'user_id');
+    }
+//    public function user(){
+//        return $this->belongsTo(User::class);
+//    }
 
-    /**
+
+        /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>

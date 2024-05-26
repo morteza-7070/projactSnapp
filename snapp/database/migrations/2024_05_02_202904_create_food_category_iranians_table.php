@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('food_category_iranians', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('discount_id')->default(1);
+            $table->foreign('discount_id')->references('id')->on('discounts')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->text('image_food')->nullable();
+            $table->string("price");
             $table->text('description');
+
             $table->timestamps();
         });
     }

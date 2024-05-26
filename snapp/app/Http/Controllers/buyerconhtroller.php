@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Api\buyyer;
 use Illuminate\Http\Request;
 
 class buyerconhtroller extends Controller
@@ -11,7 +12,7 @@ class buyerconhtroller extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
