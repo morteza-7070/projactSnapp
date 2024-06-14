@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('image_food');
-            $table->integer('price');
+            $table->integer('price')->default(50000);
+            $table->unsignedBigInteger('discount_id')->default(1);
+            $table->foreign('discount_id')->references('id')->on('discounts')->OnDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });

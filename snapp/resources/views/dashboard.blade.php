@@ -26,7 +26,7 @@
         <div class="col-sm-6 ">
 {{--            @extends('form restaurant.formRestuarant');--}}
             <div class="btn">
-               <a href="{{route('seller.form.index')}}" > <button class="btn btn-primary">ورود به صفحه تکمیل مشخصات رستوران</button></a>
+               <a href="{{route('seller.Index')}}" > <button class="btn btn-primary">ورود به صفحه تکمیل مشخصات رستوران</button></a>
             </div>
         </div>
     <div class="col-sm-6">

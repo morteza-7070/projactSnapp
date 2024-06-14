@@ -25,11 +25,21 @@
     <div class="nav">
         @include('header/header')
     </div>
-    @include('Category/category')
-    <div class="banner">
+   <div class="row">
+      <div class="col-sm-3">
+          <a href="{{route('Comment.index')}}" class="btn btn-secondary text-center">نظرات و کامنت ها</a>
+          <br>
+          <a href="{{route('Order.index')}}" class="btn btn-info mt-3">سفارش فروش </a><br>
+          <a href="" class="btn btn-dark text-white mt-3">سفارش خرید</a>
 
-
-    </div>
+      </div>
+       <div class="col-sm-9">
+           @include('Category/category')
+       </div>
+   </div>
+<div class="body">
+    <a href="{{route('Order.index')}}" class="btn btn-dark">سبد  خرید محصولات</a>
+</div>
     <div class="footer">
         @include('footer/footer')
 

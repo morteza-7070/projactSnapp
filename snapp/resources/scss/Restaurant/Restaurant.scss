@@ -1,0 +1,25 @@
+.container{
+    a{text-decoration: none}
+    .btn{ color: #1a202c; margin-left: 3%}
+    .category-restaurant{table-layout: fixed;width: 100%;
+        thead{
+            tr{
+                th{text-align: center}
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    word-wrap: break-word;
+                    text-align: center;
+                    .form-delete{
+                        .btn-danger{
+                            margin-left: 90%;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}

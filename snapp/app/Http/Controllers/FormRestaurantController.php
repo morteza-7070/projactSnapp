@@ -24,7 +24,7 @@ class FormRestaurantController extends Controller
      */
     public function create()
     {
-//        return view('form restaurant.formRestaurant');
+            return view('form restaurant.create');
     }
 
     /**
@@ -47,7 +47,7 @@ class FormRestaurantController extends Controller
             'address'=>$request->address,
             'accountNumber'=>$request->accountNumber,
         ]);
-        return redirect()->route('seller.form.index');
+        return redirect()->route('seller.Index');
     }
 
     /**
@@ -61,24 +61,43 @@ class FormRestaurantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(formRestaurant $formRestaurant)
+    public function edit(formRestaurant $formRestaurant,$id)
     {
-        //
+        $forms=formRestaurant::FindOrFail($id);
+        return view('form restaurant.edit',compact('forms'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateformRestaurantRequest $request, formRestaurant $formRestaurant)
+    public function update(Request $request,$id)
     {
-        //
+        $forms=formRestaurant::FindOrFail($id);
+        $request->validate([
+            'name'=>'required|string|max:255',
+//            'type'=>'required',
+            'phoneNumber'=>'required|string|max:255',
+            'address'=>'required|string|max:255',
+            'accountNumber'=>'required'
+        ]);
+        $forms->update([
+            'name'=>$request->name,
+            'type'=>$request->type,
+            'phoneNumber'=>$request->phoneNumber,
+            'address'=>$request->address,
+            'accountNumber'=>$request->accountNumber
+        ]);
+        return redirect()->route('seller.Index',compact('forms'));
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(formRestaurant $formRestaurant)
+    public function destroy( $id)
     {
-        //
+        $destroy=formRestaurant::FindOrFail($id);
+        $destroy->delete();
+        return redirect()->route('seller.Index',compact('destroy'));
     }
 }

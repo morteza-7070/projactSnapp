@@ -16,6 +16,14 @@
     <textarea name="image_food"  cols="30" rows="10" id="create" placeholder="enter url image-food" style="color: #1a202c"></textarea><br>
 
     <br>
+    <input type="text" name="price" placeholder="enter price" class="text-black">
+    <br>
+    <select name="discount" id="" class="text-black">
+        @foreach($discounts as $discount)
+            <option {{$discount->id}} >{{$discount->percentage}}</option>
+
+        @endforeach
+    </select>
 
     <input type="submit" name="submit" class="btn btn-info">
 </form>

@@ -51,4 +51,15 @@
 
 
     }
+    .row{
+        .col-sm-3{
+            text-align: center;
+            justify-content: center;
+            margin-top: 2%;
+        }
+        .col-sm-9{
+            text-align: center;
+            justify-content: center;
+        }
+    }
 }

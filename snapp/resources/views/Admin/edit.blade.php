@@ -13,11 +13,12 @@
 
 
 
-<form action="{{route('Admin.update',$category->id)}}" method="post" id="edit">
+<form action="{{route('Admin.update',$category->id)}}" method="POST" id="edit">
     @csrf
     @method('PUT')
 
     <input type="text" name="name" placeholder="name" value="{{$category->name}}" class="editName"><br>
+    <textarea name="image_restaurant" class="image">{{$category->image_restaurant}}</textarea>
     <button type="submit" class="btn btn-info" name="submit" id="btn">ارسال</button>
 </form>
 

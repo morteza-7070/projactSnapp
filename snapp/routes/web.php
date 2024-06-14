@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FoodCategorySandwichController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Api\BuyyerController;
 
 use App\Http\Controllers\CategoryFoodController;
 use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\FormRestaurantController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\FoodCategoryFastfodeController;
@@ -103,31 +105,31 @@ Route::prefix('category')->group(function(){
 //Route::get('/index',function (){
 //    return view('Admin.food.indexFood');
 //});
-Route::prefix('iranian')->group(function (){
-    Route::get('/',[FoodCategoryIranianController::class,'index'])->name('Food.iranian.index');
-    Route::get('create',[FoodCategoryIranianController::class,'create'])->name('Food.iranian.create');
-    Route::post('create',[FoodCategoryIranianController::class,'store'])->name('Food.iranian.create');
-    Route::post('edit/{id}',[FoodCategoryIranianController::class,'edit'])->name('Food.iranian.edit');
-    Route::PUT('update/{id}',[FoodCategoryIranianController::class,'update'])->name('Food.iranian.update');
-    Route::delete('destroy/{id}/destroy',[FoodCategoryIranianController::class,'destroy'])->name('Food.iranian.destroy');
-});
-Route::prefix('fastFood')->group(function (){
-    Route::get('/',[FoodCategoryFastFodeController::class,'index'])->name('Food.fastFood.index');
-    Route::get('create',[FoodCategoryFastFodeController::class,'create'])->name('Food.fastFood.create');
-    Route::post('create',[FoodCategoryFastFodeController::class,'store'])->name('Food.fastFood.create');
-    Route::post('edit/{id}/edit',[FoodCategoryFastFodeController::class,'edit'])->name('Food.fastFood.edit');
-    Route::patch('update/{id}/update',[FoodCategoryFastFodeController::class,'update'])->name('Food.fastFood.update');
-    Route::delete('destroy/{id}/destroy',[FoodCategoryFastfodeController::class,'destroy'])->name('Food.fastFood.destroy');
-});
-Route::prefix('sandwich')->group(function (){
-    Route::get('/',[FoodCategorySandwichController::class,'index'])->name('Food.sandwich.index');
-    Route::get('create',[FoodCategorySandwichController::class,'create'])->name('Food.sandwich.create');
-    Route::post('create',[FoodCategorySandwichController::class,'store'])->name('Food.sandwich.create');
-    Route::post('edit/{id}/edit',[FoodCategorySandwichController::class,'edit'])->name('Food.sandwich.edit');
-    Route::patch('update/{id}/update',[FoodCategorySandwichController::class,'update'])->name('Food.sandwich.update');
-    Route::delete('destroy/{id}/destroy',[FoodCategorySandwichController::class,'destroy'])->name('Food.sandwich.destroy');
-
-});
+//Route::prefix('iranian')->group(function (){
+//    Route::get('/',[FoodCategoryIranianController::class,'index'])->name('Food.iranian.index');
+//    Route::get('create',[FoodCategoryIranianController::class,'create'])->name('Food.iranian.create');
+//    Route::post('create',[FoodCategoryIranianController::class,'store'])->name('Food.iranian.create');
+//    Route::post('edit/{id}',[FoodCategoryIranianController::class,'edit'])->name('Food.iranian.edit');
+//    Route::PUT('update/{id}',[FoodCategoryIranianController::class,'update'])->name('Food.iranian.update');
+//    Route::delete('destroy/{id}/destroy',[FoodCategoryIranianController::class,'destroy'])->name('Food.iranian.destroy');
+//});
+//Route::prefix('fastFood')->group(function (){
+//    Route::get('/',[FoodCategoryFastFodeController::class,'index'])->name('Food.fastFood.index');
+//    Route::get('create',[FoodCategoryFastFodeController::class,'create'])->name('Food.fastFood.create');
+//    Route::post('create',[FoodCategoryFastFodeController::class,'store'])->name('Food.fastFood.create');
+//    Route::post('edit/{id}/edit',[FoodCategoryFastFodeController::class,'edit'])->name('Food.fastFood.edit');
+//    Route::patch('update/{id}/update',[FoodCategoryFastFodeController::class,'update'])->name('Food.fastFood.update');
+//    Route::delete('destroy/{id}/destroy',[FoodCategoryFastfodeController::class,'destroy'])->name('Food.fastFood.destroy');
+//});
+//Route::prefix('sandwich')->group(function (){
+//    Route::get('/',[FoodCategorySandwichController::class,'index'])->name('Food.sandwich.index');
+//    Route::get('create',[FoodCategorySandwichController::class,'create'])->name('Food.sandwich.create');
+//    Route::post('create',[FoodCategorySandwichController::class,'store'])->name('Food.sandwich.create');
+//    Route::post('edit/{id}/edit',[FoodCategorySandwichController::class,'edit'])->name('Food.sandwich.edit');
+//    Route::patch('update/{id}/update',[FoodCategorySandwichController::class,'update'])->name('Food.sandwich.update');
+//    Route::delete('destroy/{id}/destroy',[FoodCategorySandwichController::class,'destroy'])->name('Food.sandwich.destroy');
+//
+//});
 Route::prefix('seller')->group(function (){
     Route::get('/',[SellerController::class,'index'])->name('Seller.seller.index');
     Route::get('create',[SellerController::class,'create'])->name('Seller.seller.create');
@@ -136,11 +138,10 @@ Route::prefix('seller')->group(function (){
     Route::put('update/{id}/update',[SellerController::class,'update'])->name('Seller.seller.update');
     Route::delete('destroy/{id}/destroy',[SellerController::class,'destroy'])->name('Seller.seller.destroy');
 });
-Route::prefix('cart1')->group(function (){
+Route::prefix('cart')->group(function (){
     Route::get('/',[CartController::class,'index'])->name('Cart.index');
     Route::get('create',[CartController::class,'create'])->name('Cart.create');
     Route::post('create',[CartController::class,'store'])->name('Cart.store');
-//    Route::POST('edit/{id}/edit',[CartController::class,'edit'])->name('Cart.edit');
     Route::post('edit/{id}/edit', [CartController::class,'edit'])->name('Cart.edit');
     Route::patch('update/{id}/update',[CartController::class,'update'])->name('Cart.update');
     Route::delete('destroy/{id}/destroy',[CartController::class,'destroy'])->name('Cart.destroy');
@@ -152,5 +153,30 @@ Route::prefix('order')->group(function (){
     Route::post('edit/{id}/edit',[OrderController::class,'edit'])->name('Order.edit');
     Route::put('update/{id}/update',[OrderController::class,'update'])->name('Order.update');
     Route::delete('destroy/{id}/destroy',[OrderController::class,'destroy'])->name('Order.destroy');
+});
+Route::prefix('comments')->group(function (){
+    Route::get('/',[CommentController::class,'index'])->name('Comment.index');
+    Route::get('create',[CommentController::class,'create'])->name('Comment.create');
+    Route::post('create',[CommentController::class,'store'])->name('Comment.store');
+    Route::post('edit/{id}/edit',[CommentController::class,'edit'])->name('Comment.edit');
+    Route::put('update/{id}/update',[CommentController::class,'update'])->name('Comment.update');
+    Route::delete('destroy/{id}/destroy',[CommentController::class,'destroy'])->name('Comment.destroy');
+});
+Route::prefix('Report')->group(function(){
+    Route::get('/',[ReportController::class,'index'])->name('Report.index');
+    Route::get('create',[ReportController::class,'create'])->name('Report.create');
+    Route::post('create',[ReportController::class,'store'])->name('Report.store');
+    Route::post('edit/{id}/edit',[ReportController::class,'edit'])->name('Report.edit');
+    Route::put('update/{id}/update',[ReportController::class,'update'])->name('Report.update');
+    Route::delete('destroy/{id}/destroy',[ReportController::class,'destroy'])->name('Report.destroy');
+});
+
+Route::prefix('sellerFood')->group(function () {
+    Route::get('/', [FormRestaurantController::class, 'index'])->name('seller.Index');
+    Route::get('create', [FormRestaurantController::class, 'create'])->name('seller.create');
+    Route::post('create', [FormRestaurantController::class, 'store'])->name('seller.store');
+    Route::get('edit/{id}/edit', [FormRestaurantController::class, 'edit'])->name('seller.edit');
+    Route::put('update/{id}/update', [FormRestaurantController::class, 'update'])->name('seller.update');
+    Route::delete('destroy/{id}/destroy', [FormRestaurantController::class, 'destroy'])->name('seller.destroy');
 });
 require __DIR__.'/auth.php';

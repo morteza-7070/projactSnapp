@@ -1,0 +1,22 @@
+@import "create";
+@import "edit";
+
+.container{
+    a{text-decoration: none}
+    table{table-layout: fixed;
+        background-color: #dcdde1;
+
+        thead{
+            tr{
+                th{width: 10%;text-align: center}
+            }
+        }
+    }
+    tbody{
+        tr{
+            td{width: 10%;text-align: center;
+
+            }
+        }
+    }
+}

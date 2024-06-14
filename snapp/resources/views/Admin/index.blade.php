@@ -1,7 +1,7 @@
 
 <head>
     @vite([
-        'resources/css/app.css', 'resources/scss/food/Admin.scss',
+        'resources/css/app.css', 'resources/scss/Restaurant/Restaurant.scss',
         'resources/js/app.js',
     ])
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -9,9 +9,9 @@
 <div class="container">
     <h1>لیست رستوران ها</h1>
     <a href="{{route('home')}}">backHome</a>
-    <button class=" btn btn-primary text-right "><a href="{{route('Admin.create')}}">وارد کردن نام رستوران</a></button>
+    <button class=" btn btn-info text-black "><a href="{{route('Admin.create')}}">وارد کردن نام رستوران</a></button>
     @foreach($category as $names)
-        <table class="category-restuarant">
+        <table class="category-restaurant">
             <thead>
             <tr>
                 <th class="id"><h4>id</h4></th>
@@ -34,7 +34,7 @@
                             @csrf
                             @method('DELETE')
                             {{$names->text}}
-                            <button type="submit" class="btn btn-danger" id="btn-delete">delete</button>
+                            <button type="submit" class="btn btn-danger" id="btn-delete">Delete</button>
                         </form>
                     </td>
                     <td class="form-edit">
@@ -42,7 +42,7 @@
                             @csrf
 
 
-                            <button type="submit" class="btn btn-success" id="edit">edit</button>
+                            <button type="submit" class="btn btn-success" id="edit">Edit</button>
                         </form>
                     </td>
                 </div>

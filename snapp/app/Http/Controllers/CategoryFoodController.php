@@ -26,8 +26,9 @@ class CategoryFoodController extends Controller
     public function create()
 
     {
+        $discounts=Discount::all();
 
-        return view('Admin.food.create');
+        return view('Admin.food.create',compact('discounts'));
     }
 
     /**

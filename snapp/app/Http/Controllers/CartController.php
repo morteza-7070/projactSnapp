@@ -15,9 +15,9 @@ class CartController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-//        $carts=Cart::FindOrFail(2);
-        $carts= Cart::all();
+    {   $carts= Cart::all();
+       // $carts1=Cart::FindOrFail(2);
+
 
         return view('cart.index',compact('carts'));
     }
@@ -72,7 +72,9 @@ class CartController extends Controller
     public function edit(Cart $cart,string $id)
     {
         $carts=Cart::FindOrFail($id);
-        return view('cart.edit',compact('carts'));
+        $users=User::all();
+        $foods=CategoryFood::all();
+        return view('cart.edit',compact('carts','users','foods'));
 
     }
 

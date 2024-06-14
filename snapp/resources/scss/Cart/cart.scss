@@ -1,23 +1,26 @@
 @import "edit";
 @import "create";
 
-.container{
+.container{background-color: #a5b1c2;
     a{text-decoration: none;color: #1a202c}
-    table{
+    table{table-layout: fixed;
         margin: 3rem 5rem;
 
         thead{
             tr{
                 th{
-                   padding-left: 3rem;
+
                     text-align: center;
+                    width: 20%;
                 }
             }
         }
         tbody{
             tr{
                 td{
-                    text-align: center;padding-left: 3rem;
+                    text-align: center;width: 20%;
+                    #delete{ }
+                    #edit{}
 
                 }
             }

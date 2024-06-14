@@ -11,8 +11,12 @@ class Discount extends Model
     protected $fillable=['name','percentage'];
     public function food()
     {
-        return $this->hasOne(FoodCategoryFastfode::class, 'discount_id');
+        return $this->hasOne(CategoryFood::class, 'discount_id');
     }
+    public function order(){
+        return $this->hasOne(Order::class, 'discount_id');
+    }
+
     public function category(){
 
         return $this->morphToMany(Connection::class,'connectioanbels');

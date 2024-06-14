@@ -13,4 +13,8 @@ class Seller extends Model
     public function buyer(){
         return $this->belongsTo(buyyer::class);
     }
+    public function seller()
+    {
+        return $this->hasOne(User::class, 'user_id');
+    }
 }

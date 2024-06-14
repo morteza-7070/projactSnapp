@@ -18,5 +18,9 @@ class Cart extends Model
 
         return $this->morphToMany(Connection::class,'connectioanbels');
     }
-    protected $fillable=['user_id','product_id','quantity'];
+    public function cart()
+    {
+        return $this->hasOne(Cart::class, 'cart_id');
+    }
+    protected $fillable=['user_id','food_id','quantity'];
 }

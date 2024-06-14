@@ -1,0 +1,34 @@
+@import "create";
+@import "edit";
+
+
+.container{margin:3% 20%;
+    a{text-decoration: none;}
+    table{table-layout: fixed;width: 100%;background-color: #7f8fa6;margin-top: 2%;
+        thead{text-align: center;
+
+            tr{
+                th{
+                   color: white;
+                    width: 25%;
+
+
+
+
+                }
+            }
+        }
+        tbody{text-align: center;table-layout: fixed;;word-wrap: break-word;
+            tr{
+                td{
+                    height: auto;;word-wrap: break-word;color: white;
+
+
+                }
+                .content{width: 25%}
+                .name{width: 25%}
+                .user_name{width: 25rem}
+            }
+        }
+    }
+}

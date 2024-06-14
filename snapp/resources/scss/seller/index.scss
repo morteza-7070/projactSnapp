@@ -9,14 +9,14 @@
         color: #1a202c;
 
     }
-    table{
+    table{table-layout: fixed;
         width: 100%;
         height: auto;
         thead{
             tr{
                 th{
                     background-color: #6b7280;
-                   padding: 0 3rem;
+                   width: 15%;
                     text-align: center;
 
                 }
@@ -27,6 +27,7 @@
                 td{
                     padding: 0 3rem;
                     text-align: center;
+                    width: 15%;
 
                    #delete{
                        transform: translateX(6rem);

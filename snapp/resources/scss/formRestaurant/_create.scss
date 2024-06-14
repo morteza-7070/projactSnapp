@@ -1,0 +1,37 @@
+#form{ text-align: center;
+    table-layout: fixed;
+    justify-content: center;
+    margin-top: 3%;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRap__pnciQFdxdMrbPNyQ8IjELXn68rhStaw&s");
+
+
+    .form{
+.bodyForm{
+
+    #name{
+        .name{
+            width: 100%;
+            margin-top: 2%;
+
+        }
+    }
+    #type{
+        #typeRestaurant{
+            width: 13%;margin-top: 2%;
+
+        }
+    }
+    #phone{
+        .phone{
+            width: 100%;margin-top: 2%;
+
+        }
+    }
+    #address{
+        .address{margin-top: 2%;}
+    }
+    #account{.account{margin-top: 2%;}}
+    .btn{margin-top: 3%}
+}
+    }
+}

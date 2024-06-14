@@ -19,7 +19,6 @@ class BuyyerController extends Controller
 
     public function index()
     {
-       // $token = $request->user()->createToken();
         $api = buyyer::all();
         return response()->json($api);
     }
@@ -43,6 +42,7 @@ class BuyyerController extends Controller
             'email' => $request->email,
             'phoneNumber' => $request->phoneNumber,
             'password' => bcrypt($request->password),
+            'address'=>$request->address,
         ]);
         //return $request->all();
         return response()->json($buy,201);

@@ -65,7 +65,7 @@ class RataurantCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRataurantCategoryRequest $request, RataurantCategory $rataurantCategory,string $id)
+    public function update(Request $request, string $id)
     {
         $category=RataurantCategory::findOrFail($id);
         $request->validate([
@@ -74,6 +74,7 @@ class RataurantCategoryController extends Controller
 
         $category->update([
             'name'=>$request->name,
+            'image_restaurant'=>$request->image_restaurant
         ]);
         return redirect()->route('Admin.index',compact('category'));
 

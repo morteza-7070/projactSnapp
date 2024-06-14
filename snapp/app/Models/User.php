@@ -23,9 +23,9 @@ class User extends Authenticatable
         'phoneNumber',
         'password',
     ];
-    public function User()
+    public function order()
     {
-        return $this->hasOne(User::class, 'user_id');
+        return $this->hasMany(Order::class, 'user_id');
     }
 //    public function user(){
 //        return $this->belongsTo(User::class);

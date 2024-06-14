@@ -5,7 +5,8 @@
         <ul class="navbar-nav">
             <li class="nav-item"><a href="{{route('register')}}" class="nav-link"> ثبت نام فروشندگان
                     <img src="https://img.icons8.com/color-glass/48/restaurant--v4.png" alt=""></a></li>
-            <li class="nav-item"><a href="" class="nav-link"><button class="btn btn-danger">ورود یا عضویت</button> </a></li>
+            <li class="nav-item"><a href="{{route('Seller.seller.index')}}" class="nav-link"><button class="btn btn-danger">ورود یا عضویت</button> </a></li>
+            <li class="nav-item"><a href="{{route('Report.create')}}" class="nav-link"><button class="btn btn-info"> ایجاد و ارسال گزارش </button> </a></li>
         </ul>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQelLb2X9pvC-r0k_Hmiij51Rto_1BDSxHANXIv6ZVxEg&s" alt="" id="img-snap">
     </div>

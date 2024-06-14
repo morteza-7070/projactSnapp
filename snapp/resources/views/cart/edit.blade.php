@@ -11,10 +11,23 @@
     @method('PATCH')
     <h1>EDIT FORM</h1>
     <div class="edit">
-        <input type="text" class="user" name="user_id" value="{{$carts->name}}"><br>
-        <input type="text" class="food" name="discount_id" value="{{$carts->percentage}}"><br>
-        <input type="text" class="quantity" name="quantity" value="{{$carts->quantity}}"><br>
-{{--        <input type="text" class="time" name="created_at" value="{{$carts->created_at}}"><br>--}}
+{{--        <input type="text" class="user" name="user_id" value="{{$carts->users->name}}"><br>--}}
+        <select name="user_id" id="">
+            @foreach($users as $user)
+                <option name="user" value="{{$user->id}}">{{$user->name}}</option>
+            @endforeach
+        </select><br>
+        <select name="food_id" id="">
+            @foreach($foods as $food)
+                <option value="{{$food->id}}">{{$food->name}}</option>
+            @endforeach
+        </select> <br>
+        <select name="food_id" id="">
+            @foreach($foods as $food)
+                <option value="{{$food->id}}">{{$food->price}}</option>
+            @endforeach
+        </select><br>
+        <input type="text" class="quantity" name="quantity" value="{{$carts->quantity}}" ><br>
         <button type="submit" class="btn btn-info">send </button>
         <br>
     </div>
