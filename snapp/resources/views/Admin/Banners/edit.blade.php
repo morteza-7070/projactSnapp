@@ -15,6 +15,7 @@
     @method('PUT')
 
     <textarea name="image_banners" cols="30" rows="10">{{$banners->image_banners}}</textarea>
+    <input type="file" value="{{$banners->images}}">
 
     <button type="submit" class="btn btn-info" name="submit">ارسال</button>
 </form>

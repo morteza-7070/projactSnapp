@@ -32,12 +32,28 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image_banners'=>'required',
+            'file'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
 
         ]);
+        if ($request->hasFile('file')) {
+            $filePath = $request->file('file')->getRealPath();
+            $fileDoc = file_get_contents($filePath);
+            $fileBase64 = base64_encode($fileDoc);
+            $fileMime = $request->file('file')->getClientMimeType();
+        }
+        if ($request->hasFile('images')) {
+            $imagesPath = $request->file('images')->getRealPath();
+            $imagesDoc = file_get_contents($imagesPath);
+            $imagesBase64 = base64_encode($imagesDoc);
+            $imagesMime = $request->file('images')->getClientMimeType();
+        }
         Banner::create([
-            'image_banners'=>$request->image_banners,
+            'image_banners' => $request->image_banners,
+            'images' => $imagesBase64,
+            'file' => $fileBase64,
+            'mime' => $imagesMime,
 
 
         ]);
@@ -72,11 +88,13 @@ class BannerController extends Controller
         $banners=Banner::findOrFail($id);
         $request->validate([
             'image_banners' => 'required',
+            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
         ]);
 
         $banners->update([
             'image_banners'=>$request->image_banners,
+            'images'=>$request->images,
 
         ]);
         return redirect()->route('Admin.banner.index',compact('banners','id'));

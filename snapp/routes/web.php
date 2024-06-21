@@ -75,7 +75,7 @@ Route::prefix('admin/discount')->group(function (){
     Route::delete('destroy/{id}/destroy',[DiscountController::class,'destroy'])->name('Admin.discount.destroy');
 
 });
-Route::prefix('admin/banners')->group(function (){
+Route::middleware('web')->prefix('admin/banners')->group(function (){
     Route::get('/',[BannerController::class,'index'])->name('Admin.banner.index');
     Route::get('create',[BannerController::class,'create'])->name('Admin.banner.create');
     Route::post('create',[BannerController::class,'store'])->name('Admin.banner.create');

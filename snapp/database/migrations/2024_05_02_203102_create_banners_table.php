@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
             $table->text('image_banners')->nullable();
+            $table->binary('images')->nullable();
+            $table->text('images2')->nullable();
+
             $table->timestamps();
         });
+        \Illuminate\Support\Facades\DB::statement("ALTER TABLE banners ADD file MEDIUMBLOB ");
     }
 
     /**
