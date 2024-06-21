@@ -31,36 +31,35 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate the incoming request
         $request->validate([
-            'file'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'images'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
 
         ]);
+
+        // Handle file upload for 'file'
         if ($request->hasFile('file')) {
             $filePath = $request->file('file')->getRealPath();
             $fileDoc = file_get_contents($filePath);
             $fileBase64 = base64_encode($fileDoc);
             $fileMime = $request->file('file')->getClientMimeType();
         }
-        if ($request->hasFile('images')) {
-            $imagesPath = $request->file('images')->getRealPath();
-            $imagesDoc = file_get_contents($imagesPath);
-            $imagesBase64 = base64_encode($imagesDoc);
-            $imagesMime = $request->file('images')->getClientMimeType();
-        }
-        Banner::create([
-            'image_banners' => $request->image_banners,
-            'images' => $imagesBase64,
-            'file' => $fileBase64,
-            'mime' => $imagesMime,
 
+
+
+
+
+        Banner::create([
+
+            'file' => $fileBase64,
 
         ]);
-        return redirect()->route('Admin.banner.index')->with('success','Banner created successfully.');
 
-
+        // Redirect with success message
+        return redirect()->route('Admin.banner.index')->with('success', 'Banner created successfully.');
     }
+
+//
 
     /**
      * Display the specified resource.
@@ -87,16 +86,23 @@ class BannerController extends Controller
     {
         $banners=Banner::findOrFail($id);
         $request->validate([
-            'image_banners' => 'required',
-            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+            'file' => 'required',
 
         ]);
 
-        $banners->update([
-            'image_banners'=>$request->image_banners,
-            'images'=>$request->images,
+        if ($request->hasFile('file')) {
+            $filePath = $request->file('file')->getRealPath();
+            $fileDoc = file_get_contents($filePath);
+            $fileBase64 = base64_encode($fileDoc);
+            $fileMime = $request->file('file')->getClientMimeType();
 
-        ]);
+            $banner->update([
+                'file' => $fileBase64,
+//                'mime' => $fileMime,
+            ]);
+
+        }
         return redirect()->route('Admin.banner.index',compact('banners','id'));
     }
 

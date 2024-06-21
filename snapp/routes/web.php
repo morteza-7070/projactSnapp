@@ -78,9 +78,9 @@ Route::prefix('admin/discount')->group(function (){
 Route::middleware('web')->prefix('admin/banners')->group(function (){
     Route::get('/',[BannerController::class,'index'])->name('Admin.banner.index');
     Route::get('create',[BannerController::class,'create'])->name('Admin.banner.create');
-    Route::post('create',[BannerController::class,'store'])->name('Admin.banner.create');
-    Route::post('edit/{id}/edit',[BannerController::class,'edit'])->name('Admin.banner.edit');
-    Route::put('update/{id}',[BannerController::class,'update'])->name('Admin.banner.update');
+    Route::post('create',[BannerController::class,'store'])->name('Admin.banner.store');
+    Route::get('edit/{id}/edit',[BannerController::class,'edit'])->name('Admin.banner.edit');
+    Route::put('update/{id}/update',[BannerController::class,'update'])->name('Admin.banner.update');
     Route::delete('destroy/{id}/destroy',[BannerController::class,'destroy'])->name('Admin.banner.destroy');
 
 });

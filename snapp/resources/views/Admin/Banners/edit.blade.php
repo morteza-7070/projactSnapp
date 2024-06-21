@@ -10,13 +10,23 @@
 
 
 
-<form action="{{route('Admin.banner.update',$banners->id)}}" method="post">
+
+{{--<form action="{{ route('Admin.banner.update', $banners->id) }}" method="POST" enctype="multipart/form-data">--}}
+{{--    @csrf--}}
+{{--    @method('PUT')--}}
+{{--    {{$banners->text}}--}}
+{{--    <input type="file" name="file" value="{{ $banners->file}}">--}}
+
+{{--    <button type="submit" class="btn btn-info">ارسال</button>--}}
+{{--</form>--}}
+<form action="{{ route('Admin.banner.update', $banners->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
+    <div>{{ $banners->file }}</div>
+    <input type="file" name="file">
 
-    <textarea name="image_banners" cols="30" rows="10">{{$banners->image_banners}}</textarea>
-    <input type="file" value="{{$banners->images}}">
-
-    <button type="submit" class="btn btn-info" name="submit">ارسال</button>
+    <button type="submit" class="btn btn-info">ارسال</button>
 </form>
+
+
 

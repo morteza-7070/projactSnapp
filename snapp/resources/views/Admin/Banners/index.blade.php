@@ -14,15 +14,15 @@
             <tr>
                 <th>id</th>
                 <th>image</th>
-                <th>fileimage</th>
+
 
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>{{$banner->id}}</td>
-                <td><img src="data:image/jpeg;base64,{{base64_encode($banner->images)}}" alt=""></td>
-                <td><img src="data:image/jpeg;base64,{{base64_encode($banner->file) }}" alt=""></td>
+
+                <td><img src="data:image/jpeg;base64,{{ $banner->file }}" alt=""></td>
 
                 <td>
                     <form action="{{route("Admin.banner.destroy",$banner->id)}}" method="post" class="delete">
@@ -33,7 +33,7 @@
                     </form>
                 </td>
                 <td>
-                    <form action="{{route('Admin.banner.edit',$banner->id)}}" method="post">
+                    <form action="{{route('Admin.banner.edit',$banner->id)}}" method="get">
                         @csrf
                         <button type="submit" class="btn btn-info">Edit</button>
                     </form>
