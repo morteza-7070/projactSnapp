@@ -35,12 +35,19 @@ class RataurantCategoryController extends Controller
     {
 
         $request->validate([
-            'name'=>'required|max:255',
-            'image_restaurant'=>'required',
+            'name'=>'max:5000',
+            'image_restaurant'=>'mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
+        if($request->hasfile('image_restaurant')){
+            $filePath = $request->file('image_restaurant')->store('rataurant_categories','public');
+            $fileMime = $request->file('image_restaurant')->getClientMimeType();
+
+        }
         RataurantCategory::create([
             'name'=>$request->name,
-            'image_restaurant'=>$request->image_restaurant,
+            'image_restaurant'=>$filePath,
+            'image_mime'=>$fileMime,
         ]);
         return redirect()->route('Admin.index');
     }
@@ -70,12 +77,19 @@ class RataurantCategoryController extends Controller
         $category=RataurantCategory::findOrFail($id);
         $request->validate([
             'name' => 'required|string|max:255',
+            'image_restaurant' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
+
+        if ($request->hasFile('image_restaurant')) {
+            $filePath = $request->file('image_restaurant')->store('rataurant_categories', 'public');
+            $fileMime = $request->file('image_restaurant')->getClientMimeType();
 
         $category->update([
             'name'=>$request->name,
-            'image_restaurant'=>$request->image_restaurant
-        ]);
+            'image_restaurant'=>$filePath,
+            'mime'=>$fileMime,]);
+        }
         return redirect()->route('Admin.index',compact('category'));
 
     }

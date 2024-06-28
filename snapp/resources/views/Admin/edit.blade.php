@@ -13,12 +13,15 @@
 
 
 
-<form action="{{route('Admin.update',$category->id)}}" method="POST" id="edit">
+<form action="{{route('Admin.update',$category->id)}}" method="POST" id="edit" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
     <input type="text" name="name" placeholder="name" value="{{$category->name}}" class="editName"><br>
-    <textarea name="image_restaurant" class="image">{{$category->image_restaurant}}</textarea>
+    <div class="image">
+        <img src="{{ asset('storage/' . $category->image_restaurant) }}" alt="Banner Image"  class="img">
+    </div>
+    <input type="file" name="image_restaurant" >
     <button type="submit" class="btn btn-info" name="submit" id="btn">ارسال</button>
 </form>
 

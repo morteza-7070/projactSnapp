@@ -23,8 +23,7 @@ return new class extends Migration
 
 
         });
-//        \Illuminate\Support\Facades\DB::statement("ALTER TABLE banners ADD file MEDIUMBLOB ");
-//        \Illuminate\Support\Facades\DB::statement("ALTER TABLE banners MODIFY `images` MEDIUMTEXT");
+
     }
 
     /**

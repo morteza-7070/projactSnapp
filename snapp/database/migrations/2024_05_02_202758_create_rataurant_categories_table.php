@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('rataurant_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('image_restaurant')->nullable();
+            $table->string('image_restaurant')->nullable();
+            $table->string('mime')->default('image/jpeg');
             $table->timestamps();
         });
     }

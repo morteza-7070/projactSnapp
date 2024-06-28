@@ -48,12 +48,10 @@ Route::middleware('auth')->group(function () {
 });
 Route::prefix('admin')->group(function () {
     Route::get('/index',[RataurantCategoryController::class,'index'])->name('Admin.index');
-
     Route::get('/create',[RataurantCategoryController::class,'create'])->name('Admin.create');
-
     Route::post('/create',[RataurantCategoryController::class,'store'])->name('Admin.create');
-    Route::post('edit/{id}',[RataurantCategoryController::class,'edit'])->name('Admin.edit');
-    Route::put('update/{id}',[RataurantCategoryController::class,'update'])->name('Admin.update');
+    Route::get('edit/{id}',[RataurantCategoryController::class,'edit'])->name('Admin.edit');
+    Route::put('update/{id}/update',[RataurantCategoryController::class,'update'])->name('Admin.update');
     Route::delete('destroy/{id}/destroy',[RataurantCategoryController::class,'destroy'])->name('Admin.destroy');
 
 });

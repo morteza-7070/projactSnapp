@@ -25,7 +25,7 @@
             <tr>
 
                 <td class="id">{{$names->id}}</td>
-                <td class="imageRestaurant"><img src="{{$names->image_restaurant}}" alt=""></td>
+                <td class="imageRestaurant"> <<img src="{{ asset('storage/' . $names->image_restaurant) }}" alt="Banner Image" style="max-width: 800px;"></td>
                 <td class="name"><h3>{{$names->name}}</h3></td>
                 <br>
                 <div class="button">
@@ -38,7 +38,7 @@
                         </form>
                     </td>
                     <td class="form-edit">
-                        <form action="{{route("Admin.edit",$names->id)}}" method="post">
+                        <form action="{{route("Admin.edit",$names->id)}}" method="get">
                             @csrf
 
 
