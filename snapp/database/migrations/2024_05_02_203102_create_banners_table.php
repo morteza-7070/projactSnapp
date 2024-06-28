@@ -12,15 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('banners', function (Blueprint $table) {
-            $table->id();
-            $table->text('image_banners')->nullable();
-            $table->binary('images')->nullable();
-            $table->text('images2')->nullable();
 
+//            $table->text('image_banners')->nullable();
+//            $table->binary('images')->nullable();
+//            $table->text('images2')->nullable();
+            $table->id();
+            $table->string('file');
+            $table->string('mime')->default('image/jpeg');
             $table->timestamps();
+
+
         });
-        \Illuminate\Support\Facades\DB::statement("ALTER TABLE banners ADD file MEDIUMBLOB ");
-        \Illuminate\Support\Facades\DB::statement("ALTER TABLE banners MODIFY `images` MEDIUMTEXT");
+//        \Illuminate\Support\Facades\DB::statement("ALTER TABLE banners ADD file MEDIUMBLOB ");
+//        \Illuminate\Support\Facades\DB::statement("ALTER TABLE banners MODIFY `images` MEDIUMTEXT");
     }
 
     /**

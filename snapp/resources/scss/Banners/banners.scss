@@ -1,26 +1,30 @@
 @import "createBanner";
 @import "edit";
 .container{
-    table{
+    table{table-layout: fixed;
         thead{
             tr{
-                th{color: #1a202c;
+                th{
+                    width: 20%;
                     text-align: center;
-                    padding: 0 3rem;
+
 
                 }
             }
         }
         tbody{
             tr{
-                td{text-align: center;
-
-                    .delete{
-                        margin: 0 5rem 0 40rem;
+                td{
+                    width: 20%;
+                    text-align: center;
+                    img{width: 100%;margin-top: 5%;
+                    height: 200px}
+                    form{
+                        .btn-danger{margin-left: 90%}
                     }
-
                 }
             }
         }
     }
 }
+

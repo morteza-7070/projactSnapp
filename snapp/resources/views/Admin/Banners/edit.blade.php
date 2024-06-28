@@ -11,28 +11,15 @@
 
 
 
-{{--<form action="{{ route('Admin.banner.update', $banners->id) }}" method="POST" enctype="multipart/form-data">--}}
-{{--    @csrf--}}
-{{--    @method('PUT')--}}
-{{--    {{$banners->text}}--}}
-{{--    <input type="file" name="file" value="{{ $banners->file}}">--}}
 
-{{--    <button type="submit" class="btn btn-info">ارسال</button>--}}
-{{--</form>--}}
-{{--<form action="{{ route('Admin.banner.update', $banners->id) }}" method="POST" enctype="multipart/form-data">--}}
-{{--    @csrf--}}
-{{--    @method('PUT')--}}
-{{--    <div>{{ $banners->file }}</div>--}}
-{{--    <input type="file" name="file">--}}
-
-{{--    <button type="submit" class="btn btn-info">ارسال</button>--}}
-{{--</form>--}}
-<form action="{{ route('Admin.banner.update', $banner->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('Admin.banner.update', $banner->id) }}" method="POST" enctype="multipart/form-data" id="FormEdit">
     @csrf
     @method('PUT')
-{{--    ---}}
-    <input type="file" name="file" value="{{$banner->images3}}">
-    <button type="submit" class="btn btn-info">ارسال</button>
+    <div class="image">
+        <img src="{{ asset('storage/' . $banner->file) }}" alt="Banner Image"  class="img">
+    </div>
+    <input type="file" name="file">
+    <button type="submit" class="btn btn-info">Update</button>
 </form>
 
 
