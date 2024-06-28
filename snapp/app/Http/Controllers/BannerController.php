@@ -33,16 +33,23 @@ class BannerController extends Controller
     {
         // Validate the incoming request
         $request->validate([
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+            'images3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
 
         ]);
 
         // Handle file upload for 'file'
-        if ($request->hasFile('file')) {
-            $filePath = $request->file('file')->getRealPath();
-            $fileDoc = file_get_contents($filePath);
-            $fileBase64 = base64_encode($fileDoc);
-            $fileMime = $request->file('file')->getClientMimeType();
+//        if ($request->hasFile('file')) {
+//            $filePath = $request->file('file')->getRealPath();
+//            $fileDoc = file_get_contents($filePath);
+//            $fileBase64 = base64_encode($fileDoc);
+//            $fileMime = $request->file('file')->getClientMimeType();
+//        }
+        if($request->hasFile('images3')){
+            $file = $request->file('images3');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $path='uploads/banners';
+            $file->move($path,$filename);
         }
 
 
@@ -51,7 +58,7 @@ class BannerController extends Controller
 
         Banner::create([
 
-            'file' => $fileBase64,
+            'images3' => $path.$filename,
 
         ]);
 
@@ -72,39 +79,69 @@ class BannerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Banner $banner,string $id)
+//    public function edit(Banner $banner,string $id)
+//    {
+//
+//        $banners=Banner::findOrFail($id);
+//        return view('Admin.Banners.edit',compact('banners','id'));
+//    }
+//
+//    /**
+//     * Update the specified resource in storage.
+//     */
+//    public function update(Request $request, Banner $banner,string $id)
+//    {
+//        $banners=Banner::findOrFail($id);
+//        $request->validate([
+//
+//            'file' => 'required',
+//
+//        ]);
+//
+//        if ($request->hasFile('file')) {
+//            $filePath = $request->file('file')->getRealPath();
+//            $fileDoc = file_get_contents($filePath);
+//            $fileBase64 = base64_encode($fileDoc);
+//            $fileMime = $request->file('file')->getClientMimeType();
+//
+//            $banner->update([
+//                'file' => $fileBase64,
+//               'mime' => $fileMime,
+//            ]);
+//
+//        }
+//        return redirect()->route('Admin.banner.index',compact('banners','id'));
+//    }
+    public function edit(Banner $banner, string $id)
     {
-
-        $banners=Banner::findOrFail($id);
-        return view('Admin.Banners.edit',compact('banners','id'));
+        $banner = Banner::findOrFail($id);
+        return view('Admin.Banners.edit', compact('banner'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Banner $banner,string $id)
+    public function update(Request $request, string $id)
     {
-        $banners=Banner::findOrFail($id);
+        $banner = Banner::findOrFail($id);
+
         $request->validate([
-
-            'file' => 'required',
-
+            'images3' => 'required|mimes:jpeg,png,jpg,gif|max:2048', // Validate file type and size
         ]);
 
         if ($request->hasFile('file')) {
-            $filePath = $request->file('file')->getRealPath();
-            $fileDoc = file_get_contents($filePath);
-            $fileBase64 = base64_encode($fileDoc);
+            $filePath = $request->file('file')->store('banners', 'public'); // Store file in the 'public/banners' directory
             $fileMime = $request->file('file')->getClientMimeType();
 
             $banner->update([
-                'file' => $fileBase64,
+                'images3' => $filePath,
 //                'mime' => $fileMime,
             ]);
-
         }
-        return redirect()->route('Admin.banner.index',compact('banners','id'));
+
+        return redirect()->route('Admin.banner.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
