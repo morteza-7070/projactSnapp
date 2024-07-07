@@ -15,8 +15,8 @@ class FoodCategoryFastfodeController extends Controller
      */
     public function index()
     {
-        $fasts=FoodCategoryFastfode::all();
-        $discounts=Discount::all();
+         $fasts=FoodCategoryFastfode::all();
+//        $discounts=Discount::all();
         return view('Admin.categoryFastfood.index',compact('fasts','discounts'));
     }
 
@@ -36,15 +36,21 @@ class FoodCategoryFastfodeController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'image_food'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'price'=>'required',
             'description'=>'required',
-            
+
 
         ]);
+        if($request->hasfile('image')){
+            $filePath = $request->file('image')->store('food_category_fastfodes','public');
+            $fileMime = $request->file('image')->getClientMimeType();
+
+        }
         $foodCategory= FoodCategoryFastfode::create([
             'name'=>$request->name,
-            'image_food'=>$request->image_food,
+            'image'=>$filePath,
+            'mime'=>$fileMime,
             'price'=>$request->price,
             'description'=>$request->description,
 //            'discount_id'=>$request->discount_id

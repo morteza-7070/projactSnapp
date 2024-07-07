@@ -9,7 +9,7 @@ class webFoodCategoryFastfode extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','image_food','price','description'];
+    protected $fillable = ['name','image','price','description','discount_id'];
 //    public function discount(){
 //        return $this->belongsTo(Discount::class,'discount_id');
 //    }

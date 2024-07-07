@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
-            $table->text('image_food')->nullable();
+            $table->string('image')->nullable();
             $table->string("price");
             $table->text('description');
             $table->unsignedBigInteger('discount_id');

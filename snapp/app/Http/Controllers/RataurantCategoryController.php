@@ -76,7 +76,7 @@ class RataurantCategoryController extends Controller
     {
         $category=RataurantCategory::findOrFail($id);
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'string|max:255',
             'image_restaurant' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
 
         ]);

@@ -25,10 +25,10 @@
             <tr>
 
                 <td class="id">{{$names->id}}</td>
-                <td class="imageRestaurant"> <<img src="{{ asset('storage/' . $names->image_restaurant) }}" alt="Banner Image" style="max-width: 800px;"></td>
+                <td class="imageRestaurant"> <img src="{{ asset('storage/' . $names->image_restaurant) }}" alt="Banner Image" style="max-width: 800px;"></td>
                 <td class="name"><h3>{{$names->name}}</h3></td>
                 <br>
-                <div class="button">
+
                     <td class="form-delete">
                         <form action="{{route("Admin.destroy",$names->id)}}" method="post" class="form-delete">
                             @csrf
@@ -45,7 +45,7 @@
                             <button type="submit" class="btn btn-success" id="edit">Edit</button>
                         </form>
                     </td>
-                </div>
+
 
 
 

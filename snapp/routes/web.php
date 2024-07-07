@@ -100,34 +100,39 @@ Route::prefix('category')->group(function(){
     Route::get('restaurant',[Controller::class,'categoryRestaurant'])->name('category.restaurant');
     Route::get('discount',[Controller::class,'categoryDiscount'])->name('category.discount');
 });
+Route::get('/categoryRestaurantIranian',function (){
+    return view('CategoryRestaurant.index');})->name('categoryRestaurant.iranian');
+//Route::get('/categoryRestaurantIranian', function() {
+//    return view('CategoryRestaurant.index');
+//})->name('categoryRestaurant.iranian');
 //Route::get('/index',function (){
 //    return view('Admin.food.indexFood');
 //});
-//Route::prefix('iranian')->group(function (){
-//    Route::get('/',[FoodCategoryIranianController::class,'index'])->name('Food.iranian.index');
-//    Route::get('create',[FoodCategoryIranianController::class,'create'])->name('Food.iranian.create');
-//    Route::post('create',[FoodCategoryIranianController::class,'store'])->name('Food.iranian.create');
-//    Route::post('edit/{id}',[FoodCategoryIranianController::class,'edit'])->name('Food.iranian.edit');
-//    Route::PUT('update/{id}',[FoodCategoryIranianController::class,'update'])->name('Food.iranian.update');
-//    Route::delete('destroy/{id}/destroy',[FoodCategoryIranianController::class,'destroy'])->name('Food.iranian.destroy');
-//});
-//Route::prefix('fastFood')->group(function (){
-//    Route::get('/',[FoodCategoryFastFodeController::class,'index'])->name('Food.fastFood.index');
-//    Route::get('create',[FoodCategoryFastFodeController::class,'create'])->name('Food.fastFood.create');
-//    Route::post('create',[FoodCategoryFastFodeController::class,'store'])->name('Food.fastFood.create');
-//    Route::post('edit/{id}/edit',[FoodCategoryFastFodeController::class,'edit'])->name('Food.fastFood.edit');
-//    Route::patch('update/{id}/update',[FoodCategoryFastFodeController::class,'update'])->name('Food.fastFood.update');
-//    Route::delete('destroy/{id}/destroy',[FoodCategoryFastfodeController::class,'destroy'])->name('Food.fastFood.destroy');
-//});
-//Route::prefix('sandwich')->group(function (){
-//    Route::get('/',[FoodCategorySandwichController::class,'index'])->name('Food.sandwich.index');
-//    Route::get('create',[FoodCategorySandwichController::class,'create'])->name('Food.sandwich.create');
-//    Route::post('create',[FoodCategorySandwichController::class,'store'])->name('Food.sandwich.create');
-//    Route::post('edit/{id}/edit',[FoodCategorySandwichController::class,'edit'])->name('Food.sandwich.edit');
-//    Route::patch('update/{id}/update',[FoodCategorySandwichController::class,'update'])->name('Food.sandwich.update');
-//    Route::delete('destroy/{id}/destroy',[FoodCategorySandwichController::class,'destroy'])->name('Food.sandwich.destroy');
-//
-//});
+Route::prefix('iranian')->group(function (){
+    Route::get('/',[FoodCategoryIranianController::class,'index'])->name('Food.iranian.index');
+    Route::get('create',[FoodCategoryIranianController::class,'create'])->name('Food.iranian.create');
+    Route::post('create',[FoodCategoryIranianController::class,'store'])->name('Food.iranian.create');
+    Route::post('edit/{id}',[FoodCategoryIranianController::class,'edit'])->name('Food.iranian.edit');
+    Route::PUT('update/{id}',[FoodCategoryIranianController::class,'update'])->name('Food.iranian.update');
+    Route::delete('destroy/{id}/destroy',[FoodCategoryIranianController::class,'destroy'])->name('Food.iranian.destroy');
+});
+Route::prefix('fastFood')->group(function (){
+    Route::get('/',[FoodCategoryFastFodeController::class,'index'])->name('Food.fastFood.index');
+    Route::get('create',[FoodCategoryFastFodeController::class,'create'])->name('Food.fastFood.create');
+    Route::post('create',[FoodCategoryFastFodeController::class,'store'])->name('Food.fastFood.create');
+    Route::post('edit/{id}/edit',[FoodCategoryFastFodeController::class,'edit'])->name('Food.fastFood.edit');
+    Route::patch('update/{id}/update',[FoodCategoryFastFodeController::class,'update'])->name('Food.fastFood.update');
+    Route::delete('destroy/{id}/destroy',[FoodCategoryFastfodeController::class,'destroy'])->name('Food.fastFood.destroy');
+});
+Route::prefix('sandwich')->group(function (){
+    Route::get('/',[FoodCategorySandwichController::class,'index'])->name('Food.sandwich.index');
+    Route::get('create',[FoodCategorySandwichController::class,'create'])->name('Food.sandwich.create');
+    Route::post('create',[FoodCategorySandwichController::class,'store'])->name('Food.sandwich.create');
+    Route::post('edit/{id}/edit',[FoodCategorySandwichController::class,'edit'])->name('Food.sandwich.edit');
+    Route::patch('update/{id}/update',[FoodCategorySandwichController::class,'update'])->name('Food.sandwich.update');
+    Route::delete('destroy/{id}/destroy',[FoodCategorySandwichController::class,'destroy'])->name('Food.sandwich.destroy');
+
+});
 Route::prefix('seller')->group(function (){
     Route::get('/',[SellerController::class,'index'])->name('Seller.seller.index');
     Route::get('create',[SellerController::class,'create'])->name('Seller.seller.create');

@@ -23,7 +23,7 @@
     <tbody>
     <tr>
         <td>{{$fast->name}}</td>
-        <td><img src="{{$fast->image_food}}" alt=""></td>
+        <td><img src="{{$fast->image}}" alt=""></td>
         <td>{{$fast->price}}</td>
         <td>{{$fast->description}}</td>
 {{--        <td>{{$fast->discount->percentage}}</td>--}}

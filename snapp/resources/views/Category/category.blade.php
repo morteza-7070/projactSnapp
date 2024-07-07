@@ -10,7 +10,7 @@
                 {{--                    <a href=""><button class="btn btn-light"><span><</span>پیتزا</button> </a>--}}
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcSmn0XG0T3chmzRFSh2pKMFD5_ALy3xl5bmtbNKf_4g&s" alt="" class="food">
                 <div class="card-body">
-                    <a href="{{route('Admin.index')}}"><button class="btn btn-light"><span><</span>دسته بندی رستوران ها</button> </a>
+                    <a href="{{route('categoryRestaurant.iranian')}}"><button class="btn btn-light"><span><</span>دسته بندی رستوران ها</button> </a>
 
 
                 </div>

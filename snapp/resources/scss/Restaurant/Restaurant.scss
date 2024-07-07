@@ -1,24 +1,24 @@
 .container{
     a{text-decoration: none}
     .btn{ color: #1a202c; margin-left: 3%}
-    .category-restaurant{table-layout: fixed;width: 100%;
+    .category-restaurant{table-layout: fixed;word-break: break-word;
         thead{
             tr{
-                th{text-align: center}
+                th{text-align: center;width: 15%}
             }
         }
         tbody{
             tr{
                 td{
-                    word-wrap: break-word;
+
                     text-align: center;
-                    .form-delete{
-                        .btn-danger{
-                            margin-left: 90%;
-                        }
-                    }
+                    width: 15%;
+                    .btn-danger{margin-left: 70%}
+                    .btn-success{margin-left: 10%}
+
 
                 }
+
             }
         }
     }
