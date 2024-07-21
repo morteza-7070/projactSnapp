@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('food_category_fastfodes', function (Blueprint $table) {
+        Schema::create('food_category_fastfoods', function (Blueprint $table) {
             $table->id();
+
 
             $table->string('name');
             $table->string('image')->nullable();
+            $table->string('mime')->default('image/jpeg');
             $table->string("price");
             $table->text('description');
             $table->unsignedBigInteger('discount_id');
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('food_category_fastfodes');
+        Schema::dropIfExists('food_category_fastfoods');
     }
 };

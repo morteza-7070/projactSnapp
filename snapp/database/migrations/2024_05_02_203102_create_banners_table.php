@@ -12,11 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('banners', function (Blueprint $table) {
+           $table->id();
 
-//            $table->text('image_banners')->nullable();
-//            $table->binary('images')->nullable();
-//            $table->text('images2')->nullable();
-            $table->id();
             $table->string('file');
             $table->string('mime')->default('image/jpeg');
             $table->timestamps();

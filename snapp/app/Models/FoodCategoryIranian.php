@@ -11,7 +11,7 @@ class FoodCategoryIranian extends Model
     public function discount(){
         return $this->belongsTo(Discount::class,'discount_id');
     }
- protected $fillable = ['name','image_food','price','description'];
+ protected $fillable = ['name','image','price','description','discount_id','mime'];
     public function category(){
 
         return $this->morphToMany(Connection::class,'connectioanbels');

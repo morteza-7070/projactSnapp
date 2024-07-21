@@ -11,7 +11,7 @@
     <table>
         <thead>
         <tr>
-            <th>آیدی</th>
+{{--            <th>آیدی</th>--}}
             <th>نام</th>
             <th>عکس</th>
             <th>قیمت</th>
@@ -23,9 +23,9 @@
         </thead>
         <tbody>
         <tr>
-            <td>{{$iran->id}}</td>
+{{--            <td>{{$iran->id}}</td>--}}
             <td>{{$iran->name}}</td>
-            <td><img src="{{$iran->image_food}}" alt=""></td>
+            <td><img src="{{ asset('storage/' . $iran->image) }}" alt="CategoryIranian" style="max-width: 800px;"></td>
             <td>{{$iran->price}}</td>
             <td>{{$iran->description}}</td>
             <td>{{$iran->discount->percentage}}</td>

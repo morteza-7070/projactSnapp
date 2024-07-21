@@ -18,10 +18,6 @@ class FoodCategoryIranianController extends Controller
         $iranian = FoodCategoryIranian::all();
         return view('Admin.categoryIranian.index', compact('iranian'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $discounts = Discount::all();
@@ -29,31 +25,38 @@ class FoodCategoryIranianController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for creating a new resource.
      */
     public function store(Request $request)
     {
+        $filePath = null;
+        $fileMime = null;
+
         $request->validate([
-            'name'=>'required',
-            'image_food'=>'required',
-            'price'=>'required',
-            'description'=>'required',
-
-
-
+            'name' => 'required',
+            'image' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'discount_id' => 'required',
         ]);
+
+        if ($request->hasFile('image')) {
+            $filePath = $request->file('image')->store('food_category_iranians', 'public');
+            $fileMime = $request->file('image')->getMimeType();
+        }
+
         FoodCategoryIranian::create([
-           // $request->all()
-            'name'=>$request->name,
-            'image_food'=>$request->image_food,
-            'price'=>$request->price,
-            'description'=>$request->description,
-            'discount_id'=>$request->discount_id
+            'name' => $request->name,
+            'image' => $filePath,
+              'mime' => $fileMime ? $fileMime : 'application/octet-stream',
+            'price' => $request->price,
+            'description' => $request->description,
+            'discount_id' => $request->discount_id
         ]);
+
         return redirect()->route('Food.iranian.index');
-
-
     }
+
 
     /**
      * Display the specified resource.
@@ -79,17 +82,22 @@ class FoodCategoryIranianController extends Controller
     {
         $iran=FoodCategoryIranian::FindOrFail($id);
         $request->validate([
-            'name'=>'required',
-            'image_food'=>'required',
-            'price'=>'required',
-            'description'=>'required',
+//            'name'=>'required',
+//            'image'=>'required',
+//            'price'=>'required',
+//            'description'=>'required',
             'discount_id'=>'required',
 
         ]);
+        if($request->hasFile('image')){
+        $filPath=$request->file('image')->store('food_category_iranians','public');
+        $filMime=$request->file('image')->getMimeType();
+    }
         $iran->update([
 
             'name'=>$request->name,
-            'image_food'=>$request->image_food,
+            'image'=>$filPath,
+            'mime'=>$filMime,
             'price'=>$request->price,
             'description'=>$request->description,
             'discount_id'=>$request->discount_id

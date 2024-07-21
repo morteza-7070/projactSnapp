@@ -1,12 +1,13 @@
 @import "create";
+@import "Edit";
 table{
-    margin: 2rem 5rem;
+    margin: 2rem 5rem;table-layout: fixed;
     thead{
         tr{
             th{
 
                 text-align: center;
-                margin-right: 5rem;
+                //margin-right: 5rem;
 
 
             }
@@ -15,13 +16,13 @@ table{
     tbody{
         tr{
             td{
-                text-align: center;
+                text-align: center;width: 8%;
                 .btn{
-                    margin-left: 700%;
+
                 }
                 img{
-                    width: 200px;
-                    height: 200px;
+
+                    text-align: center;
                 }
 
             }

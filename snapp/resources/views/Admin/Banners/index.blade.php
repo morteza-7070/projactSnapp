@@ -22,11 +22,17 @@
                 <td>{{ $banner->id }}</td>
                 <td><img src="{{ asset('storage/' . $banner->file) }}" alt="Banner Image" style="max-width: 800px;"></td>
                 <td>
-                    <form action="{{ route('Admin.banner.destroy', $banner->id) }}" method="POST">
+                    <form action="{{route('Admin.banner.destroy', $banner->id) }}" method="post">
                         @csrf
                         @method('DELETE')
+                        {{$banner->text}}
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
+{{--                    <form action="{{ route('Admin.banner.destroy', ['id' => $banner->id]) }}" method="POST">--}}
+{{--                        @csrf--}}
+{{--                        @method('DELETE')--}}
+{{--                        <button type="submit" class="btn btn-danger">Delete</button>--}}
+{{--                    </form>--}}
 {{--                    <a href="{{ route('Admin.banner.edit', $banner->id) }}">Edit</a>--}}
                 </td>
                 <td>

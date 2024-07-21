@@ -69,11 +69,27 @@ class BannerController extends Controller
         return redirect()->route('Admin.banner.index');
     }
 
+//    public function destroy( Banner $banner,string $id)
+//    {
+//        $banner = Banner::findOrFail($id);
+//        $banner->delete();
+//        return redirect()->route('Admin.banner.index');
+//    }
+//    public function destroy(string $id)
+//    {
+//        $banner = Banner::findOrFail($id);
+//        $banner->delete();
+//        return redirect()->route('Admin.banner.index');
+//    }
     public function destroy($id)
     {
-        $banner = Banner::findOrFail($id);
-        $banner->delete();
-        return redirect()->route('Admin.banner.index');
+        $banner = Banner::find($id);
+        if ($banner) {
+            $banner->delete();
+            return redirect()->route('Admin.banner.index')->with('success', 'Banner deleted successfully');
+        } else {
+            return redirect()->route('Admin.banner.index')->with('error', 'Banner not found');
+        }
     }
 //    public function index()
 //    {

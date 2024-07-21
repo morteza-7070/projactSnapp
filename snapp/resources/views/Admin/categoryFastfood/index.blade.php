@@ -22,11 +22,12 @@
     </thead>
     <tbody>
     <tr>
+
         <td>{{$fast->name}}</td>
-        <td><img src="{{$fast->image}}" alt=""></td>
+        <td><img src="{{ asset('storage/' . $fast->image) }}" alt="CategoryFastFoods" style="max-width: 800px;"></td>
         <td>{{$fast->price}}</td>
         <td>{{$fast->description}}</td>
-{{--        <td>{{$fast->discount->percentage}}</td>--}}
+        <td>{{$fast->discount->percentage}}</td>
         <td>
             <form action="{{route('Food.fastFood.destroy',$fast->id)}}" method="post">
                 @csrf

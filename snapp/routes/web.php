@@ -73,14 +73,13 @@ Route::prefix('admin/discount')->group(function (){
     Route::delete('destroy/{id}/destroy',[DiscountController::class,'destroy'])->name('Admin.discount.destroy');
 
 });
-Route::middleware('web')->prefix('admin/banners')->group(function (){
+Route::prefix('admin/banner')->group(function (){
     Route::get('/',[BannerController::class,'index'])->name('Admin.banner.index');
-    Route::get('create',[BannerController::class,'create'])->name('Admin.banner.create');
-    Route::post('create',[BannerController::class,'store'])->name('Admin.banner.store');
+    Route::get('/create',[BannerController::class,'create'])->name('Admin.banner.create');
+    Route::post('/create',[BannerController::class,'store'])->name('Admin.banner.store');
     Route::get('edit/{id}/edit',[BannerController::class,'edit'])->name('Admin.banner.edit');
     Route::put('update/{id}/update',[BannerController::class,'update'])->name('Admin.banner.update');
-    Route::delete('destroy/{id}/destroy',[BannerController::class,'destroy'])->name('Admin.banner.destroy');
-
+    Route::delete('destroy/{id}/destroy', [BannerController::class, 'destroy'])->name('Admin.banner.destroy');
 });
 //Route::prefix('seller')->group(function (){
 //    Route::get('/',[FormRestaurantController::class,'index'])->name('seller.form.index');
@@ -111,9 +110,9 @@ Route::get('/categoryRestaurantIranian',function (){
 Route::prefix('iranian')->group(function (){
     Route::get('/',[FoodCategoryIranianController::class,'index'])->name('Food.iranian.index');
     Route::get('create',[FoodCategoryIranianController::class,'create'])->name('Food.iranian.create');
-    Route::post('create',[FoodCategoryIranianController::class,'store'])->name('Food.iranian.create');
-    Route::post('edit/{id}',[FoodCategoryIranianController::class,'edit'])->name('Food.iranian.edit');
-    Route::PUT('update/{id}',[FoodCategoryIranianController::class,'update'])->name('Food.iranian.update');
+    Route::post('create',[FoodCategoryIranianController::class,'store'])->name('Food.iranian.store');
+    Route::post('edit/{id}/edit',[FoodCategoryIranianController::class,'edit'])->name('Food.iranian.edit');
+    Route::put('update/{id}/update',[FoodCategoryIranianController::class,'update'])->name('Food.iranian.update');
     Route::delete('destroy/{id}/destroy',[FoodCategoryIranianController::class,'destroy'])->name('Food.iranian.destroy');
 });
 Route::prefix('fastFood')->group(function (){

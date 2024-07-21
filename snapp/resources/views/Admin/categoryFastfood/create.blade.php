@@ -11,9 +11,10 @@
     <label for="name">
         <input type="text" name="name" placeholder="enter nameFood" id="name">
     </label><br>
-    <label for="image">
-        <textarea name="image_food" id="img" placeholder="enter url image Food Iranian"></textarea>
-    </label><br>
+{{--    <label for="image">--}}
+{{--        <textarea name="image_food" id="img" placeholder="enter url image Food Iranian"></textarea>--}}
+{{--    </label><br>--}}
+    <input type="file" class="name" name="image">
     <label for="price">
         <input type="text" name="price" placeholder="enter price" id="price">
     </label><br>
@@ -25,7 +26,7 @@
             <option value="{{ $discount->id }}">{{ $discount->percentage }}</option>
         @endforeach
     </select><br>
-    <input type="hidden" name="discount_id" value="{{ $discounts[0]->id }}">
+{{--    <input type="hidden" name="discount_id" value="{{ $discounts[0]->id }}">--}}
 
     <button type="submit" class="btn btn-primary">send</button>
 </form>

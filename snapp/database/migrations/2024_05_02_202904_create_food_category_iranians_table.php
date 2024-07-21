@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('discount_id')->references('id')->on('discounts')->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('image')->nullable();
+            $table->string('mime')->default('image/jpeg');
             $table->string("price");
             $table->text('description');
 
