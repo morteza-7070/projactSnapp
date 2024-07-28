@@ -64,6 +64,7 @@ class BannerController extends Controller
                 'file' => $filePath,
                 'mime' => $fileMime,
             ]);
+
         }
 
         return redirect()->route('Admin.banner.index');

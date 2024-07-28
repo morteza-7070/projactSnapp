@@ -86,7 +86,7 @@ class FoodCategoryIranianController extends Controller
 //            'image'=>'required',
 //            'price'=>'required',
 //            'description'=>'required',
-            'discount_id'=>'required',
+              'discount_id'=>'required',
 
         ]);
         if($request->hasFile('image')){

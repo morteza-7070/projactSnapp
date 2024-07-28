@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('mime')->default('image/jpeg');
             $table->string("price");
-            $table->text('description');
+            $table->text('description')->nullable();
 
             $table->timestamps();
         });

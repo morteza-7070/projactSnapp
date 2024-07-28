@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('food_category_fastfoods', function (Blueprint $table) {
+        Schema::create('fast_food', function (Blueprint $table) {
             $table->id();
-
 
             $table->string('name');
             $table->string('image')->nullable();
@@ -22,7 +21,6 @@ return new class extends Migration
             $table->text('description');
             $table->unsignedBigInteger('discount_id');
             $table->foreign('discount_id')->references('id')->on('discounts')->onDelete('cascade')->onUpdate('cascade');
-
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('food_category_fastfoods');
+        Schema::dropIfExists('fast_food');
     }
 };

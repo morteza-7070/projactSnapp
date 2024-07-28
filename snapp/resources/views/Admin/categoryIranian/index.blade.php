@@ -28,7 +28,7 @@
             <td><img src="{{ asset('storage/' . $iran->image) }}" alt="CategoryIranian" style="max-width: 800px;"></td>
             <td>{{$iran->price}}</td>
             <td>{{$iran->description}}</td>
-            <td>{{$iran->discount->percentage}}</td>
+            <td>{{$iran->discount->percentage}}%</td>
             <td>
                 <form action="{{route('Food.iranian.destroy',$iran->id)}}" method="POST">
                     @csrf
@@ -38,7 +38,7 @@
                 </form>
             </td>
             <td>
-                <form action="{{route('Food.iranian.edit',$iran->id)}}" method="POST">
+                <form action="{{route('Food.iranian.edit',$iran->id)}}" method="get">
                     @csrf
                     <button type="submit" class="btn btn-info">Edit</button>
                 </form>

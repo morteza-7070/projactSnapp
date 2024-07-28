@@ -16,7 +16,7 @@ class FoodCategoryFastfodeController extends Controller
     public function index()
     {
        $fasts=FoodCategoryFastfood::all();
-        return view('Admin.categoryFastfood.index',compact('fasts'));
+        //return view('Admin.categoryFastfood.index',compact('fasts'));
     }
 
     /**
@@ -31,34 +31,41 @@ class FoodCategoryFastfodeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $filePath = null;
-        $fileMime = null;
-        $request->validate([
-            'name' => 'required',
-            'image' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'discount_id' => 'required',
-        ]);
-  
-        if ($request->hasFile('image')) {
-            $filePath = $request->file('image')->store('food_category_fastfoods', 'public');
-            $fileMime = $request->file('image')->getMimeType();
-        }
-
-        $foodCategory = FoodCategoryFastfood::create([
-            'name' => $request->name,
-            'image' => $filePath,
-            'mime' => $fileMime ? $fileMime : 'application/octet-stream',
-            'price' => $request->price,
-            'description' => $request->description,
-            'discount_id' => $request->discount_id,
-        ]);
-
-        return redirect()->route("Food.fastFood.index")->with('success', 'Discount Added Successfully');
-    }
+//    public function store(Request $request)
+//    {
+//        $filePath = null;
+//        $fileMime = null;
+//        $request->validate([
+//            'name' => 'required',
+//            'image' => 'required',
+//            'price' => 'required',
+//            'description' => 'required',
+//            'discount_id' => 'required',
+//        ]);
+//
+////        if ($request->hasFile('image')) {
+////            $filePath = $request->file('image')->store('food_category_fastfoods', 'public');
+////            $fileMime = $request->file('image')->getMimeType();
+////        }
+//        if ($request->hasFile('image')) {
+//            $image = $request->file('image');
+//            $imageName = time().'.'.$image->getClientOriginalExtension();
+//            $image->storeAs('public/food_category_fastfood', $imageName);
+//
+//            // مسیر کامل تصویر
+//            $path = Storage::url('images/'.$imageName);
+//
+//            $foodCategory = FoodCategoryFastfood::create([
+//            'name' => $request->name,
+//            'image' =>$path,
+//            'mime' => $fileMime ? $fileMime : 'application/octet-stream',
+//            'price' => $request->price,
+//            'description' => $request->description,
+//            'discount_id' => $request->discount_id,
+//        ]);
+//
+//        return redirect()->route("Food.fastFood.index")->with('success', 'Discount Added Successfully');
+//    }
 //    public function store(Request $request)
 //    {
 //        $filePath = null;
@@ -95,10 +102,10 @@ class FoodCategoryFastfodeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(FoodCategoryFastfode $foodCategoryFastfode)
-    {
-        //
-    }
+//    public function show(FoodCategoryFastfode $foodCategoryFastfode)
+//    {
+//        //
+//    }
 
     /**
      * Show the form for editing the specified resource.
