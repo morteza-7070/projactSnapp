@@ -1,5 +1,8 @@
+@import "edit";
+@import "create";
 .container{
     a{margin-top: 2%;text-decoration: none;font-weight: bolder;color: #1a202c;font-size: 2rem;}
+    .pl-5{}
     table{table-layout: fixed;margin-top: 5%;
         thead{
             tr{

@@ -73,7 +73,7 @@ class FastFoodController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(FastFood $fastFood,string $id)
+    public function edit(string $id)
     {
         $fast=FastFood::FindOrFail($id);
         return view('Admin.categoryFastfood.edit',compact('fast'));
@@ -82,10 +82,33 @@ class FastFoodController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFastFoodRequest $request, FastFood $fastFood)
-    {
-        //
+    public function update(Request $request,string $id)
+    {  $filePath=null;
+        $fileMime=null;
+        $fast=FastFood::FindOrFail($id);
+        $request->validate([
+            'name'=>'required',
+//            'description'=>'required',
+            'price'=>'required',
+//            'discount_id'=>'required',
+//            'image'=>'mimes:jpeg,jpg,png',
+
+        ]);
+        if ($request->hasFile('image')) {
+            $filePath = $request->file('image')->store('fast_food', 'public');
+            $fileMime = $request->file('image')->getMimeType();
+        }
+        $fast->update([
+            'name'=>$request->name,
+            'image'=>$filePath,
+            'mime' => $fileMime ? $fileMime : 'application/octet-stream',
+            'price'=>$request->price,
+            'description'=>$request->description,
+//            'discount_id'=>$request->discount_id
+        ]);
+        return redirect()->route('Food.fastFood.index' );
     }
+
 
     /**
      * Remove the specified resource from storage.

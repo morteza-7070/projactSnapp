@@ -6,14 +6,15 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <div class="container">
-    <a href="{{route('Food.fastFood.create')}}">create</a>
+    <h1 class="mt-3">غذاهای فست فودی</h1>
+    <a href="{{route('Food.fastFood.create')}}" class="ml-8">ایجاد غذا</a>
+    <a href="{{route('home')}}" class="pl-5">صفحه اصلی</a>
     @foreach($fasts as $fast)
         <table>
             <thead>
             <tr>
                 <th>نام</th>
                 <th>عکس</th>
-
                 <th>قیمت</th>
                 <th>توضیحات</th>
                 <th>تخفیفات</th>
@@ -29,8 +30,8 @@
                 <td><img src="{{ asset('storage/' . $fast->image) }}" alt="CategoryFastFoods" style="max-width: 800px;"></td>
                 <td>{{$fast->price}}</td>
                 <td>{{$fast->description}}</td>
-                <td>{{$fast->discount->percentage}}٪</td>
-                <td>{{$fast->price*$fast->discount->percentage/100}}</td>
+                <td>{{$fast->discount->percentage}}%</td>
+                <td>{{$fast->price*($fast->discount->percentage/100)}}</td>
                 <td>
                     <form action="{{route('Food.fastFood.destroy',$fast->id)}}" method="post">
                         @csrf
