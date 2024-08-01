@@ -1,0 +1,22 @@
+@import "create";
+@import "Edit";
+.container{margin: 3% 0;
+    #FoodIranian{text-decoration: none;margin: 2rem}
+    #Home{text-decoration: none;margin: 2rem}
+    table{table-layout: fixed;margin: 3% 5%;background-color: #fa8231;
+        thead{
+            tr{
+                th{
+                    width: 12%;text-align: center;padding: 3% 0;
+
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{ width: 12%;text-align: center;
+                }
+            }
+        }
+    }
+}

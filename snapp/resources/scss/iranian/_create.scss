@@ -1,12 +1,15 @@
-#form{
+#FormCreate{
     background-color: #6b7280;
     text-align: center;
     justify-content: center;
     margin: 3rem 10rem;
     #name{
-        width: 20rem;
-        height: auto;margin-top: 1rem;
+       .name{
+
+          margin-top: 1rem;
+       }
     }
+    .image{margin-top: 2%}
     #price{width: 20rem;
         margin-top: 1rem;
 
@@ -19,9 +22,7 @@
         width: 20rem;
         margin-top: 1rem;
     }
-    .btn{
-        margin-top: 1rem;
-    }
+
     select{
         margin-top: .5rem;
     }

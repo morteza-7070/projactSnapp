@@ -15,5 +15,5 @@ class FoodCategorySandwich extends Model
 
         return $this->morphToMany(Connection::class,'connectioanbels');
     }
-    protected $fillable = ['name','image_food','price','description'];
+    protected $fillable = ['name','image','price','description','discount_id','mime'];
 }

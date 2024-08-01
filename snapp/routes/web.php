@@ -125,12 +125,12 @@ Route::prefix('FastFood')->group(function (){
     Route::put('update/{id}/update',[FastFoodController::class,'update'])->name('Food.fastFood.update');
     Route::delete('destroy/{id}/destroy',[FastFoodController::class,'destroy'])->name('Food.fastFood.destroy');
 });
-Route::prefix('sandwich')->group(function (){
+Route::middleware('auth')->prefix('sandwich')->group(function (){
     Route::get('/',[FoodCategorySandwichController::class,'index'])->name('Food.sandwich.index');
     Route::get('create',[FoodCategorySandwichController::class,'create'])->name('Food.sandwich.create');
-    Route::post('create',[FoodCategorySandwichController::class,'store'])->name('Food.sandwich.create');
+    Route::post('create',[FoodCategorySandwichController::class,'store'])->name('Food.sandwich.store');
     Route::post('edit/{id}/edit',[FoodCategorySandwichController::class,'edit'])->name('Food.sandwich.edit');
-    Route::patch('update/{id}/update',[FoodCategorySandwichController::class,'update'])->name('Food.sandwich.update');
+    Route::put('update/{id}/update',[FoodCategorySandwichController::class,'update'])->name('Food.sandwich.update');
     Route::delete('destroy/{id}/destroy',[FoodCategorySandwichController::class,'destroy'])->name('Food.sandwich.destroy');
 
 });

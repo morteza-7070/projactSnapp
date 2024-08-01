@@ -1,0 +1,22 @@
+@import "create";
+@import "edit";
+.container{background-color: #d2dae2;margin: 2% 0;border: 2rem solid #808e9b;
+    #create{text-decoration: none;margin-left: 1.2%;color: #1a202c;font-weight: bolder;}
+    #home{text-decoration: none;color: #1a202c;font-weight: bolder}
+    table{table-layout: fixed;margin: 3% 0;
+        thead{
+            tr{
+                th{width: 15%;text-align: center}
+            }
+        }
+        tbody{
+            tr{
+                td{width: 15%;text-align: center;padding: 3% 0;
+                    #img{width: 100%}
+                    height: 5%;
+                }
+
+            }
+        }
+    }
+}
