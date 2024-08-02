@@ -1,12 +1,12 @@
 #EditForm{
     text-align: center;;justify-content: center;background-color: #a0aec0;margin: 0 20%;
    .formEdit{
-       .name{margin: 2% 0;}
-       .img{margin-left: 33%}
-       .image{margin: 3% 0;background-color: #00a8ff}
-       .price{margin-top: 1%}
-       .description{margin-top: 1%}
-       .discount{margin-top: 1%}
+      div{ .name{margin: 2% 0;}}
+       div{.img{margin-left: 33%}}
+      div{ .image{margin: 3% 0;background-color: #00a8ff}}
+      div{ .price{margin-top: 1%}}
+      div{ .description{margin-top: 1%}}
+
        .btn{margin: 1% 0}
    }
 }
