@@ -11,7 +11,7 @@ class UpdateFoodCategorySandwichRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,25 @@ class UpdateFoodCategorySandwichRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|between:2,100',
+            'description' => 'required|between:2,100',
+            'price' => 'required|between:1,999999.99',
+            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
+    }
+    public function messages(): array
+    {
+            return [
+                'name.required' => 'وارد کردن نام اجباری است',
+                'name.between'=>'تعداد حروف نام بین 2 تا 100 حرف باید باشد',
+                'description.required' => 'وارد کردن توضیحات اجباری است',
+                'description.between'=>'تعداد حروف توضیحات بین 2 تا100 حرف باید باشد',
+                'price.required' => 'وارد کردن قیمت اجباری است',
+                'price.between'=>'قیمت عددی بین 1 تا 99999 میتواند باشد',
+                'image.required' => 'وارد کردن عکس اجباری است',
+                'image.mimes' => 'فرمت عکس را صحیح وارد نمایید',
+                'image.max' => 'حداکثر حجم عکس تا 2 مگابایت است',
+
+            ];
     }
 }

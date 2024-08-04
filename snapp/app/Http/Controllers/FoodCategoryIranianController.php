@@ -72,29 +72,21 @@ class FoodCategoryIranianController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,string $id)
+    public function update(UpdateFoodCategoryIranianRequest $request,string $id)
     {
         $iran=FoodCategoryIranian::FindOrFail($id);
-        $request->validate([
-//            'name'=>'required',
-//            'image'=>'required',
-//            'price'=>'required',
-//            'description'=>'required',
-              'discount_id'=>'required',
-
-        ]);
+       $validated=$request->validated();
         if($request->hasFile('image')){
         $filPath=$request->file('image')->store('food_category_iranians','public');
         $filMime=$request->file('image')->getMimeType();
     }
         $iran->update([
 
-            'name'=>$request->name,
+            'name'=>$validated['name'],
             'image'=>$filPath,
             'mime'=>$filMime,
-            'price'=>$request->price,
-            'description'=>$request->description,
-            'discount_id'=>$request->discount_id
+            'price'=>$validated['price'],
+            'description'=>$validated['description'],
         ]);
         return redirect()->route('Food.iranian.index',compact('iran'));
     }

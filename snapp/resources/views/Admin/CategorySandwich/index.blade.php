@@ -43,7 +43,7 @@
                     </form>
                 </td>
                 <td>
-                    <form action="{{route('Food.sandwich.edit',$sandwich->id)}}" method="post" >
+                    <form action="{{route('Food.sandwich.edit',$sandwich->id)}}" method="get" >
                         @csrf
                         <button type="submit" class="btn btn-primary">Edit</button>
                     </form>

@@ -22,7 +22,28 @@ class StoreFastFoodRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'discount_id' => 'required',
 
         ];
     }
+        public function messages(): array
+    {
+        return[
+            'name.required'=>'وارد کردن نام الزامی است',
+            'image.required'=>'وارد کردن عکس الزامی است',
+            'image.image'=>'فرمت عکس از نوع image است',
+            'image.mimes'=>'صحیح باید باشد نوع عکس از فرمت ص',
+            'image.max'=>'حراکثر حجم عکس5000 است',
+            'description.required'=>'این فیلد نمیتواند خالی باشد',
+            'price.required'=>'قیمت را وارد نمایید',
+            'price.numeric'=>'قیمت عدد میپذیرد',
+            'discount_id.required'=>'وارد کردن درصد تخفیف  اجباری است',
+
+        ];
+    }
+
 }

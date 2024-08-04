@@ -31,30 +31,23 @@ class FastFoodController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreFastFoodRequest $request)
     {
         $fileMime=null;
         $filePath=null;
 
-        $request->validate([
-            'name'=>'required',
-            'description'=>'required',
-            'price'=>'required',
-            'discount_id'=>'required',
-            'image'=>'mimes:jpeg,jpg,png',
-
-        ]);
+       $validated = $request->validated();
         if ($request->hasFile('image')) {
             $filePath = $request->file('image')->store('fast_food', 'public');
             $fileMime = $request->file('image')->getMimeType();
         }
         FastFood::create([
-            'name'=>$request->name,
+            'name'=>$validated['name'],
             'image'=>$filePath,
             'mime' => $fileMime ? $fileMime : 'application/octet-stream',
-            'price'=>$request->price,
-            'description'=>$request->description,
-            'discount_id'=>$request->discount_id,
+            'price'=>$validated['price'],
+            'description'=>$validated['description'],
+            'discount_id'=>$validated['discount_id'],
 
 
         ]);
@@ -82,29 +75,21 @@ class FastFoodController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,string $id)
+    public function update(UpdateFastFoodRequest $request,string $id)
     {  $filePath=null;
         $fileMime=null;
         $fast=FastFood::FindOrFail($id);
-        $request->validate([
-            'name'=>'required',
-//            'description'=>'required',
-            'price'=>'required',
-//            'discount_id'=>'required',
-//            'image'=>'mimes:jpeg,jpg,png',
-
-        ]);
+       $validated=$request->validated();
         if ($request->hasFile('image')) {
             $filePath = $request->file('image')->store('fast_food', 'public');
             $fileMime = $request->file('image')->getMimeType();
         }
         $fast->update([
-            'name'=>$request->name,
+            'name'=>$validated['name'],
             'image'=>$filePath,
             'mime' => $fileMime ? $fileMime : 'application/octet-stream',
-            'price'=>$request->price,
-            'description'=>$request->description,
-//            'discount_id'=>$request->discount_id
+            'price'=>$validated['price'],
+            'description'=>$validated['description'],
         ]);
         return redirect()->route('Food.fastFood.index' );
     }

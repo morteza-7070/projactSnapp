@@ -26,7 +26,8 @@ class StoreFoodCategoryIranianRequest extends FormRequest
             'price' => 'required|min:4|max:8',
             'description' => 'required|max:255',
             'image'=>'required|mimes:jpeg,png,jpg,gif,svg|max:8000',
-            'discount_id'=>'required',
+            'discount_id'=>'required|max:100'
+
         ];
     }
     public function messages(): array{
@@ -44,7 +45,7 @@ class StoreFoodCategoryIranianRequest extends FormRequest
             'image.mimes'=>'فرمت عکس باید درست باشد',
             'image.max'=>'حداکثر حجم عکس باید 8000 باشد',
             'discount.require'=>'انتخاب فیلد اجباری است',
-//            'discount.max'=>'حداکحثر تعداد کاراکتر 100 است',
+            'discount.max'=>'حداکحثر تعداد کاراکتر 100 است',
         ];
     }
 }

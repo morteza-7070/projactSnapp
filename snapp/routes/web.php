@@ -16,6 +16,7 @@ use App\Http\Controllers\FormRestaurantController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\FastFoodController;
 use App\Http\Controllers\FoodCategoryIranianController;
+use App\Http\Controllers\FriedController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
@@ -129,10 +130,18 @@ Route::middleware('auth')->prefix('sandwich')->group(function (){
     Route::get('/',[FoodCategorySandwichController::class,'index'])->name('Food.sandwich.index');
     Route::get('create',[FoodCategorySandwichController::class,'create'])->name('Food.sandwich.create');
     Route::post('create',[FoodCategorySandwichController::class,'store'])->name('Food.sandwich.store');
-    Route::post('edit/{id}/edit',[FoodCategorySandwichController::class,'edit'])->name('Food.sandwich.edit');
+    Route::get('edit/{id}/edit',[FoodCategorySandwichController::class,'edit'])->name('Food.sandwich.edit');
     Route::put('update/{id}/update',[FoodCategorySandwichController::class,'update'])->name('Food.sandwich.update');
     Route::delete('destroy/{id}/destroy',[FoodCategorySandwichController::class,'destroy'])->name('Food.sandwich.destroy');
 
+});
+Route::prefix('Fried')->group(function (){
+    Route::get('/',[FriedController::class,'index'])->name('Fried.index');
+    Route::get('create',[FriedController::class,'create'])->name('Fried.create');
+    Route::post('create',[FriedController::class,'store'])->name('Fried.store');
+    Route::get('edit/{id}/edit',[FriedController::class,'edit'])->name('Fried.edit');
+    Route::put('update/{id}/update',[FriedController::class,'update'])->name('Fried.update');
+    Route::delete('destroy/{id}/destroy',[FriedController::class,'destroy'])->name('Fried.destroy');
 });
 Route::prefix('seller')->group(function (){
     Route::get('/',[SellerController::class,'index'])->name('Seller.seller.index');

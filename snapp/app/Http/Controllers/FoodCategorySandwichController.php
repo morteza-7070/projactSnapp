@@ -71,19 +71,19 @@ class FoodCategorySandwichController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreFoodCategorySandwichRequest $request, FoodCategorySandwich $foodCategorySandwich,string $id)
+    public function update(UpdateFoodCategorySandwichRequest $request, FoodCategorySandwich $foodCategorySandwich,string $id)
     {  $sandwich=FoodCategorySandwich::FindOrFail($id);
-       $request->validated([]);
+      $validated= $request->validated([]);
         if ($request->hasFile('image')) {
             $filePath = $request->file('image')->store('food_category_sandwiches', 'public');
             $fileMime = $request->file('image')->getMimeType();
         }
         $sandwich->update([
-            'name'=> $request->name,
+            'name'=> $validated['name'],
             'image'=>$filePath,
             'mime'=>$fileMime,
-            'price'=>$request->price,
-            'description'=>$request->description,
+            'price'=>$validated['price'],
+            'description'=>$validated['description'],
         ]);
         return redirect()->route('Food.sandwich.index');
 

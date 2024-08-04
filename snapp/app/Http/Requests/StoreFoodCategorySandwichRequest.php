@@ -25,7 +25,7 @@ class StoreFoodCategorySandwichRequest extends FormRequest
             'name' => 'required',
             'price' => 'required|min:4',
             'description'=>'required|max:200|min:7',
-            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:5200',
+            'image'=>'required|mimes:jpeg,png,jpg,gif,svg|max:5200',
 
 
         ];
@@ -38,6 +38,10 @@ class StoreFoodCategorySandwichRequest extends FormRequest
            'description'=>'وارد کردن فیلد توضیحات الزامی است',
            'description.max'=>'حداکثر تعداد کارکتر نباید بیشتر از 200 حرف باشد',
            'description.min'=>'حداقل کاراکتر برای ورود7 حرف است',
+           'image.required'=>'وارد کردن عکس الزامی است',
+           'image.mimes'=>'فرمت صحیح را وارد نمایید',
+           'image.max'=>'حداکثر حجم عکس باید 5 مگابایت باشد'
+
 
 
        ];

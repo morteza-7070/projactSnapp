@@ -11,7 +11,7 @@
     @method('PUT')
    <div class="formEdit">
      <div>
-         <input type="text" name="name" value="{{$iran->name}} "{{old('name')}}" class="name" >
+         <input type="text" name="name" value="{{$iran->name}} {{old('name')}}" class="name" >
          @if ($errors->first('name'))
              <span class="text-danger" >{{ $errors->first('name') }}</span>
          @endif<br>
@@ -27,14 +27,14 @@
        <br>
 
        <div>
-           <input type="text" name="price" value="{{$iran->price}}" class="price"><br>
+           <input type="text" name="price" value="{{$iran->price}}{{old('price')}}" class="price"><br>
            @if ($errors->first('price'))
                <span class="text-danger" >{{ $errors->first('price') }}</span>
            @endif
        </div>
        <br>
        <div>
-           <textarea name="description" class="description" cols="30" rows="10" >{{$iran->description}}</textarea><br>
+           <textarea name="description" class="description" cols="30" rows="10"  >{{$iran->description}}</textarea><br>
            @if ($errors->first('description'))
                <span class="text-danger" >{{ $errors->first('description') }}</span>
            @endif
