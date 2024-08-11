@@ -1,2 +1,31 @@
 @import "edit";
 @import "create";
+.container{background-color: #bdc3c7;border: 2rem solid #95a5a6;
+    .link{
+        a{text-decoration: none;color: #1a202c;font-size: 2rem;background-color: #a4b0be}
+
+    }
+    table{table-layout: fixed;word-break: break-word;margin: 2% 0;
+
+        thead{
+            tr{
+                th{
+                    width: 12%;
+                    text-align: center;
+
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    width: 12%;
+                    text-align: center;
+
+
+
+                }
+            }
+        }
+    }
+}

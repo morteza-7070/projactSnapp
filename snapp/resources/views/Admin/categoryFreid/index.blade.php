@@ -9,16 +9,42 @@
     <div class="link">
         <a href="{{route('Fried.create')}}">create</a>
     </div>
-   @foreach($freids as $freid)
+   @foreach($Crackers as $fried)
        <table>
            <thead>
            <tr>
-               <th></th>
+               <th>نام غذا</th>
+               <th>عکس</th>
+               <th>قیمت</th>
+               <th>درصد تخفیف</th>
+               <th>قیمت با احتساب تخفیف</th>
+               <th>توضیحات</th>
+
            </tr>
            </thead>
            <tbody>
            <tr>
-               <td>{{$freid->name}}</td>
+               <td>{{$fried->name}}</td>
+               <td><img src="{{ asset('storage/' . $fried->image) }}" alt="CategoryFastFoods" ></td>
+               <td>{{$fried->price}}</td>
+               <td>{{$fried->discount->percentage}}٪</td>
+               <td>{{$fried->price * ($fried->discount->percentage / 100)}}</td>
+               <td>{{$fried->description}}</td>
+               <td>
+                   <form action="{{route('Fried.destroy', $fried->id)}}" method="post">
+                       @csrf
+                       @method('DELETE')
+                       {{$fried->text}}
+                       <button type="submit" class="btn btn-danger">Delete</button>
+                   </form>
+               </td>
+               <td>
+                   <form action="{{route('Fried.edit', $fried->id)}}" method="get">
+                       @csrf
+                       <button type="submit" class="btn btn-primary">Edit</button>
+                   </form></td>
+
+
            </tr>
            </tbody>
        </table>
