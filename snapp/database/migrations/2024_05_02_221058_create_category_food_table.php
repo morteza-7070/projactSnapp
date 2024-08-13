@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('category_food', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('image_food');
-            $table->integer('price')->default(50000);
+            $table->string('ImageFood')->nullable();
+            $table->string('mime')->default('image/jpeg');
+            $table->string('price');
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('discount_id')->default(1);
             $table->foreign('discount_id')->references('id')->on('discounts')->OnDelete('cascade')->onUpdate('cascade');
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryFood extends Model
 {
     use HasFactory;
-    protected $fillable=['image_food','name'];
+    protected $fillable=['ImageFood','name','price','discount_id','description','mime'];
 //    public function categories(){
 //      return $this->morphToMany(CategoryFood::class,'categorizables');
 //    }

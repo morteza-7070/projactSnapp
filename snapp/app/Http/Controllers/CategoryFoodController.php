@@ -16,8 +16,8 @@ class CategoryFoodController extends Controller
     public function index()
     {
         $foodCategory = CategoryFood::all();
-        $discount=Discount::all();
-        return view('Admin.food.index', compact('foodCategory','discount'));
+//        $discount=Discount::all();
+        return view('Admin.food.index', compact('foodCategory'));
     }
 
     /**
@@ -34,19 +34,51 @@ class CategoryFoodController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCategoryFoodRequest $request)
     {
-        $request->validate([
-            'name'=>'required|max:255',
-            'image_food'=>'required',
+        $validated = $request->validated();
 
-        ]);
+        $filePath = null;
+        if ($request->hasFile('ImageFood')) {
+            $filePath = $request->file('ImageFood')->store('category_food', 'public');
+            $mime = $request->file('ImageFood')->getClientOriginalExtension();
+        }
+
+        // Create CategoryFood
         CategoryFood::create([
-            'name'=>$request->name,
-            'image_food'=>$request->image_food,
+            'name' => $validated['name'],
+            'ImageFood' => $filePath,
+            'mime' => $mime ?? null, // Handle case where there's no file
+            'price' => $validated['price'],
+            'discount_id' => $validated['discount_id'],
+            'description' => $validated['description'],
         ]);
-        return redirect()->route('Admin.food.index');
+
+        // Redirect with a success message (optional)
+        return redirect()
+            ->route('Admin.food.index')
+            ->with('success', 'Food item created successfully!');
     }
+//    public function store(StoreCategoryFoodRequest $request)
+//    {
+//        $fileMime=null;
+//        $filePath=null;
+//        $validated=$request->validated();
+//        if($request->hasFile('ImageFood')){
+//            $filePath=$request->file('ImageFood')->store('category_food','public');
+//            $fileMime=$request->file('ImageFood')->getClientOriginalExtension();
+//        }
+//        CategoryFood::create([
+//            'name'=>$validated['name'],
+//            'ImageFood'=>$filePath,
+//            'mime'=>$fileMime,
+//            'price'=>$validated['price'],
+//            'discount_id'=>$validated['discount_id'],
+//            'description'=>$validated['description'],
+//
+//        ]);
+//        return redirect()->route('Admin.food.index');
+//    }
 
     /**
      * Display the specified resource.

@@ -59,7 +59,7 @@ Route::prefix('admin')->group(function () {
 Route::prefix('admin/food')->group(function () {
     Route::get('/',[CategoryFoodController::class,'index'])->name('Admin.food.index');
     Route::get('/create',[CategoryFoodController::class,'create'])->name('Admin.food.create');
-    Route::post('/create',[CategoryFoodController::class,'store'])->name('Admin.food.create');
+    Route::post('/create',[CategoryFoodController::class,'store'])->name('Admin.food.store');
     Route::post('edit/{id}',[CategoryFoodController::class,'edit'])->name('Admin.food.edit');
     Route::put('update/{id}',[CategoryFoodController::class,'update'])->name('Admin.food.update');
     Route::delete('destroy/{id}/destroy',[CategoryFoodController::class,'destroy'])->name('Admin.food.destroy');

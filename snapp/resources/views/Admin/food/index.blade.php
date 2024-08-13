@@ -11,7 +11,7 @@
         <table class="category-food">
             <thead>
             <tr>
-                <th>id</th>
+
                 <th>نام</th>
                 <th>عکس</th>
                 <th>قیمت</th>
@@ -22,12 +22,13 @@
             </thead>
             <tbody>
             <tr>
-                <td><h4 id="id">{{$foods->id}}</h4></td>
+
                 <td><h4 id="name">{{$foods->name}}</h4></td>
-                <td><img src="{{$foods->image_food}}" alt="" id="image"></td>
+                <td><img src="{{ asset('storage/' . $foods->ImageFood) }}" alt="CategoryFastFoods" ></td>
                 <td>{{$foods->price}}</td>
                 <td>{{$foods->discount->percentage}}</td>
                 <td>{{$foods->price - ($foods->price * $foods->discount->percentage/100)}}</td>
+                <td>{{$foods->description}}</td>
 
                 <td></td>
 
