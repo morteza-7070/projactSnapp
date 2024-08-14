@@ -48,7 +48,7 @@ class CategoryFoodController extends Controller
         CategoryFood::create([
             'name' => $validated['name'],
             'ImageFood' => $filePath,
-            'mime' => $mime ?? null, // Handle case where there's no file
+            'mime' => $mime ?? null,
             'price' => $validated['price'],
             'discount_id' => $validated['discount_id'],
             'description' => $validated['description'],
@@ -56,29 +56,8 @@ class CategoryFoodController extends Controller
 
         // Redirect with a success message (optional)
         return redirect()
-            ->route('Admin.food.index')
-            ->with('success', 'Food item created successfully!');
+            ->route('Admin.food.index');
     }
-//    public function store(StoreCategoryFoodRequest $request)
-//    {
-//        $fileMime=null;
-//        $filePath=null;
-//        $validated=$request->validated();
-//        if($request->hasFile('ImageFood')){
-//            $filePath=$request->file('ImageFood')->store('category_food','public');
-//            $fileMime=$request->file('ImageFood')->getClientOriginalExtension();
-//        }
-//        CategoryFood::create([
-//            'name'=>$validated['name'],
-//            'ImageFood'=>$filePath,
-//            'mime'=>$fileMime,
-//            'price'=>$validated['price'],
-//            'discount_id'=>$validated['discount_id'],
-//            'description'=>$validated['description'],
-//
-//        ]);
-//        return redirect()->route('Admin.food.index');
-//    }
 
     /**
      * Display the specified resource.
@@ -101,17 +80,22 @@ class CategoryFoodController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CategoryFood $categoryFood,string $id)
+    public function update(UpdateCategoryFoodRequest $request, CategoryFood $categoryFood,string $id)
     {
         $foodCategory=CategoryFood::findOrFail($id);
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'image_food' => 'required',
-        ]);
+       $validated=$request->validated();
+       if ($request->hasFile('ImageFood')) {
+           $filePath=$request->file('ImageFood')->store('category_food', 'public');
+           $mime=$request->file('ImageFood')->getClientOriginalExtension();
+       }
 
         $foodCategory->update([
-            'name'=>$request->name,
-            'image_food'=>$request->image_food,
+            'name' => $validated['name'],
+            'ImageFood' => $filePath,
+            'mime' => $mime ?? null,
+            'price' => $validated['price'],
+
+            'description' => $validated['description'],
         ]);
         return redirect()->route('Admin.food.index',compact('foodCategory'));
     }
@@ -119,7 +103,7 @@ class CategoryFoodController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CategoryFood $categoryFood , string $id)
+    public function destroy( string $id)
     {
         $foodCategoory=CategoryFood::findOrFail($id);
         $foodCategoory->delete();

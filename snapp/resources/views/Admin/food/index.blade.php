@@ -27,7 +27,7 @@
                 <td><img src="{{ asset('storage/' . $foods->ImageFood) }}" alt="CategoryFastFoods" ></td>
                 <td>{{$foods->price}}</td>
                 <td>{{$foods->discount->percentage}}</td>
-                <td>{{$foods->price - ($foods->price * $foods->discount->percentage/100)}}</td>
+                <td>{{$foods->price * ( $foods->discount->percentage/100)}}</td>
                 <td>{{$foods->description}}</td>
 
                 <td></td>
@@ -43,7 +43,7 @@
                     </form>
                 </td>
                 <td class="form-edit">
-                    <form action="{{route("Admin.food.edit",$foods->id)}}" method="post" class="edit">
+                    <form action="{{route("Admin.food.edit",$foods->id)}}" method="get" class="edit">
                         @csrf
                         <button type="submit" class="btn btn-success">edit</button>
                     </form>
