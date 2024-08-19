@@ -1,11 +1,13 @@
-.container{
+@import "create";
+@import "edit";
+.container{margin: 2% 0;
     #Home{ color: #1a202c}
-    #create{ color: #1a202c;margin-left: 3%}
-    .category-food{width: 100%;table-layout: fixed;
-        thead{
+    #create{ color: #1a202c;margin-left: 3%;text-decoration: none;font-weight: bolder;}
+    .category-food{width: 100%;table-layout: fixed;margin: 3% 0;
+        thead{margin: 3% 0;
             tr{
                 th{text-align: center;
-                    width: 10%;
+                    width: 12%;
 
 
                 }
@@ -15,6 +17,8 @@
             tr{
                 td{text-align: center;
                     width: 10%;
+                    word-break: break-word;
+
 
                 }
             }

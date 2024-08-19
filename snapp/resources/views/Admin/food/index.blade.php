@@ -6,7 +6,7 @@
 </head>
 <div class="container">
     <a href="{{route('home')}}" id="Home" class="btn btn-danger">backHome</a>
-    <a href="{{route('Admin.food.create')}}" id="create">create</a>
+    <a href="{{route('Admin.food.create')}}" id="create" class="btn btn-success">create</a>
     @foreach($foodCategory as $foods)
         <table class="category-food">
             <thead>
@@ -17,6 +17,7 @@
                 <th>قیمت</th>
                 <th>درصد تخفیف</th>
                 <th>قیمت با احتساب تخفیفات</th>
+                <th>توضیحات</th>
 
             </tr>
             </thead>
@@ -25,9 +26,9 @@
 
                 <td><h4 id="name">{{$foods->name}}</h4></td>
                 <td><img src="{{ asset('storage/' . $foods->ImageFood) }}" alt="CategoryFastFoods" ></td>
-                <td>{{$foods->price}}</td>
-                <td>{{$foods->discount->percentage}}</td>
-                <td>{{$foods->price * ( $foods->discount->percentage/100)}}</td>
+                <td>{{$foods->price}}تومان</td>
+                <td>{{$foods->discount->percentage}}٪</td>
+                <td>{{$foods->price * ( $foods->discount->percentage/100)}}تومان</td>
                 <td>{{$foods->description}}</td>
 
                 <td></td>

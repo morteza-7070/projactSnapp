@@ -5,7 +5,7 @@
           ])
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<form action="{{route('Admin.food.update', $foodCategory->id)}}" method="post">
+<form action="{{route('Admin.food.update', $foodCategory->id)}}" method="post" id="EditForm">
     @csrf
     @method('PUT')
 
@@ -17,25 +17,25 @@
 
 </div>
 <div>
-    <input type="text" name="price"  value={{$foodCategory->price}} class="text-black"><br>
+    <input type="text" name="price"  value={{$foodCategory->price}} class="text-black" ><br>
     @if($errors->first('price'))
         <span class="text-danger" >{{$errors->first('price')}}</span>
     @endif
 
 </div>    <br>
 <div>
-    <td><img src="{{ asset('storage/' . $foodCategory->ImageFood) }}" alt="CategoryFastFoods" ></td>
+    <td><img src="{{ asset('storage/' . $foodCategory->ImageFood) }}" alt="CategoryFastFoods" class="img" ></td>
     <br>
 </div>
 <div>
-    <input type="file" name="ImageFood"><br>
+    <input type="file" name="ImageFood" class="text-black"><br>
     @if($errors->first('ImageFood'))
         <span class="text-danger" >{{$errors->first('ImageFood')}}</span>
     @endif
 
 </div>
     <div>
-        <input type="text" value="{{$foodCategory->description}}" name="description" class="text-dark"><br>
+        <input type="text" value="{{$foodCategory->description}}" name="description" class="text-black"><br>
         @if($errors->first('description'))
             <span class="text-danger">{{$errors->first('description')}}</span>
         @endif
