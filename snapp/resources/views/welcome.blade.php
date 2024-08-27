@@ -26,7 +26,7 @@
         @include('header/header')
     </div>
    <div class="row">
-      <div class="col-sm-3">
+      <div class="col-sm-3 scrollspy-example">
           <a href="{{route('Comment.index')}}" class="btn btn-secondary text-center">نظرات و کامنت ها</a>
           <br>
           <a href="{{route('Order.index')}}" class="btn btn-info mt-3">سفارش فروش </a><br>

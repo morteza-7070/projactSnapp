@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SellerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\BuyyerController;
@@ -31,4 +32,9 @@ Route::prefix('buyer')->group(function () {
 
     Route::put('/items/{id}', [BuyyerController::class, 'update']);
     Route::delete('/items/{id}', [BuyyerController::class, 'destroy']);
+});
+Route::prefix('seller')->group(function () {
+    Route::get('/', [SellerController::class, 'index'])->name('api.seller.items');
+    Route::get('create',[SellerController::class, 'create'])->name('api.seller.create');
+    Route::post('store', [SellerController::class, 'store'])->name('api.seller.store');
 });

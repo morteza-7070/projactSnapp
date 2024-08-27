@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SellerCollection;
 use App\Models\Discount;
 use App\Models\Seller;
 use App\Http\Requests\StoreSellerRequest;
@@ -15,9 +16,10 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $sellers=Seller::all();
+        $sellers=Seller::paginate(5);
        // return view('form restaurant.formRestuarant',compact('seller'));
-        return view('seller.index',compact('sellers'));
+        //return view('seller.index',compact('sellers'));
+        return new SellerCollection($sellers);
     }
 
     /**
@@ -31,23 +33,18 @@ class SellerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreSellerRequest $request)
     {
-        request()->validate([
-            'name'=>'required',
-            'email'=>'required',
-            'phoneNumber'=>'required',
-            'restaurant_name'=>'required',
-            'address_seller'=>'required',
+     $validated = $request->validated();
+       $buy= Seller::create([
+            'name'=>$validated['name'],
+            'email'=>$validated['email'],
+            'phoneNumber'=>$validated['phoneNumber'],
+            'restaurant_name'=>$validated['restaurant_name'],
+            'address_seller'=>$validated['address_seller'],
         ]);
-        Seller::create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'phoneNumber'=>$request->phoneNumber,
-            'restaurant_name'=>$request->restaurant_name,
-            'address_seller'=>$request->address_seller
-        ]);
-        return redirect()->route('Seller.seller.index');
+        return response()->json($buy,201);
+        //return redirect()->route('home');
     }
 
     /**

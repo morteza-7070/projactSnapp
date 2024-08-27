@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::middleware('auth')->prefix('admin')->group(function () {
+Route::prefix('admin')->group(function () {
     Route::get('/index',[RataurantCategoryController::class,'index'])->name('Admin.index');
     Route::get('/create',[RataurantCategoryController::class,'create'])->name('Admin.create');
     Route::post('/create',[RataurantCategoryController::class,'store'])->name('Admin.create');
@@ -56,7 +56,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::delete('destroy/{id}/destroy',[RataurantCategoryController::class,'destroy'])->name('Admin.destroy');
 
 });
-Route::middleware('auth')->prefix('admin/food')->group(function () {
+Route::prefix('admin/food')->group(function () {
     Route::get('/',[CategoryFoodController::class,'index'])->name('Admin.food.index');
     Route::get('/create',[CategoryFoodController::class,'create'])->name('Admin.food.create');
     Route::post('/create',[CategoryFoodController::class,'store'])->name('Admin.food.store');
@@ -65,7 +65,7 @@ Route::middleware('auth')->prefix('admin/food')->group(function () {
     Route::delete('destroy/{id}/destroy',[CategoryFoodController::class,'destroy'])->name('Admin.food.destroy');
 
 });
-Route::middleware('auth')->prefix('admin/discount')->group(function (){
+Route::prefix('admin/discount')->group(function (){
     Route::get('/',[DiscountController::class,'index'])->name('Admin.discount.index');
     Route::get('/create',[DiscountController::class,'create'])->name('Admin.discount.create');
     Route::post('/create',[DiscountController::class,'store'])->name('Admin.discount.create');
@@ -74,7 +74,7 @@ Route::middleware('auth')->prefix('admin/discount')->group(function (){
     Route::delete('destroy/{id}/destroy',[DiscountController::class,'destroy'])->name('Admin.discount.destroy');
 
 });
-Route::middleware('auth')->prefix('admin/banner')->group(function (){
+Route::prefix('admin/banner')->group(function (){
     Route::get('/',[BannerController::class,'index'])->name('Admin.banner.index');
     Route::get('/create',[BannerController::class,'create'])->name('Admin.banner.create');
     Route::post('/create',[BannerController::class,'store'])->name('Admin.banner.store');
@@ -107,7 +107,7 @@ Route::prefix('FastFood')->group(function (){
     Route::put('update/{id}/update',[FastFoodController::class,'update'])->name('Food.fastFood.update');
     Route::delete('destroy/{id}/destroy',[FastFoodController::class,'destroy'])->name('Food.fastFood.destroy');
 });
-Route::middleware('auth')->prefix('sandwich')->group(function (){
+Route::prefix('sandwich')->group(function (){
     Route::get('/',[FoodCategorySandwichController::class,'index'])->name('Food.sandwich.index');
     Route::get('create',[FoodCategorySandwichController::class,'create'])->name('Food.sandwich.create');
     Route::post('create',[FoodCategorySandwichController::class,'store'])->name('Food.sandwich.store');
@@ -116,7 +116,7 @@ Route::middleware('auth')->prefix('sandwich')->group(function (){
     Route::delete('destroy/{id}/destroy',[FoodCategorySandwichController::class,'destroy'])->name('Food.sandwich.destroy');
 
 });
-Route::middleware('auth')->prefix('Fried')->group(function (){
+Route::prefix('Fried')->group(function (){
     Route::get('/',[FriedController::class,'index'])->name('Fried.index');
     Route::get('create',[FriedController::class,'create'])->name('Fried.create');
     Route::post('create',[FriedController::class,'store'])->name('Fried.store');
@@ -124,14 +124,14 @@ Route::middleware('auth')->prefix('Fried')->group(function (){
     Route::put('update/{id}/update',[FriedController::class,'update'])->name('Fried.update');
     Route::delete('destroy/{id}/destroy',[FriedController::class,'destroy'])->name('Fried.destroy');
 });
-Route::prefix('seller')->group(function (){
-    Route::get('/',[SellerController::class,'index'])->name('Seller.seller.index');
-    Route::get('create',[SellerController::class,'create'])->name('Seller.seller.create');
-    Route::post('create',[SellerController::class,'store'])->name('Seller.seller.create');
-    Route::post('edit/{id}/edit',[SellerController::class,'edit'])->name('Seller.seller.edit');
-    Route::put('update/{id}/update',[SellerController::class,'update'])->name('Seller.seller.update');
-    Route::delete('destroy/{id}/destroy',[SellerController::class,'destroy'])->name('Seller.seller.destroy');
-});
+//Route::prefix('seller')->group(function (){
+//    Route::get('/',[SellerController::class,'index'])->name('Seller.seller.index');
+//    Route::get('create',[SellerController::class,'create'])->name('Seller.seller.create');
+//    Route::post('create',[SellerController::class,'store'])->name('Seller.seller.create');
+//    Route::post('edit/{id}/edit',[SellerController::class,'edit'])->name('Seller.seller.edit');
+//    Route::put('update/{id}/update',[SellerController::class,'update'])->name('Seller.seller.update');
+//    Route::delete('destroy/{id}/destroy',[SellerController::class,'destroy'])->name('Seller.seller.destroy');
+//});
 Route::prefix('cart')->group(function (){
     Route::get('/',[CartController::class,'index'])->name('Cart.index');
     Route::get('create',[CartController::class,'create'])->name('Cart.create');
